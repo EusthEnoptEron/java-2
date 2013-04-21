@@ -6,7 +6,6 @@ import javax.swing.table.AbstractTableModel;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -21,72 +20,14 @@ import java.util.Date;
 public class CSVTableModel extends AbstractTableModel {
 	Object[][] data;
 	String[] titleValues;
-
-	private String filename;
-	private char delimiter;
-	private LineBuffer buffer;
 	Class<?>[] types;
 	int rowCount = 0;
 	int columnCount = 0;
-
-	private class LineBuffer {
-		private int bufferSize;
-		private Object[][] data;
-
-		private boolean ignoreFirstLine;
-		private int start;
-		private int end;
-		LineBuffer(int bufferSize, boolean ignoreFirstLine) {
-			data = new Object[bufferSize][];
-			this.ignoreFirstLine = ignoreFirstLine;
-
-			fillBuffer(0);
-		}
-		public Object getValueAt(int row, int column) {
-			if(row < start || row > end) {
-				fillBuffer(Math.max(0, row - bufferSize / 2));
-			}
-			row = row - start;
-			if(data[row] == null) {
-				throw new ArrayIndexOutOfBoundsException("");
-			} else {
-				return data[row][column];
-			}
-		}
-
-		private void fillBuffer(int startIndex) {
-			start = startIndex;
-			end = startIndex + bufferSize - 1;
-
-			Arrays.fill(data, null);
-			try(
-				CSVReader reader = new CSVReader(filename, delimiter);
-			) {
-				if(ignoreFirstLine) {
-					reader.nextLine();
-				}
-				int i = 0;
-				reader.seek(start);
-				while(reader.nextLine() && i < bufferSize) {
-					data[i] = reader.readValues();
-				}
-			}
-			catch(FileNotFoundException e) {
-				System.out.println("File not found.");
-			}
-			catch(IOException e) {
-				System.out.println("IO Exception.");
-			}
-		}
-	}
-
 	CSVTableModel(String filename, char delimiter) {
-		boolean hasTitleLine = false;
-		this.filename = filename;
-		this.delimiter = delimiter;
 		try (
 				CSVReader reader = new CSVReader(filename, delimiter);
 		) {
+			boolean hasTitleLine = false;
 			// Analyze
 			while(reader.nextLine()) {
 				if(rowCount == 0) {
@@ -111,6 +52,14 @@ public class CSVTableModel extends AbstractTableModel {
 				reader.nextLine();
 				titleValues = reader.readValues();
 			}
+
+			data = new Object[rowCount][];
+			int i = 0;
+			while(reader.nextLine()) {
+				String[] values = reader.readValues();
+				columnCount = Math.max(columnCount, values.length);
+				data[i++] = values;
+			}
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File not found.");
@@ -118,10 +67,8 @@ public class CSVTableModel extends AbstractTableModel {
 		catch(IOException e) {
 			System.out.println("IO Exception.");
 		}
-
-		buffer = new LineBuffer(100, hasTitleLine);
 	}
-
+	
 	private Class<?>[] analyzeValues(String[] values) {
 		Class<?>[] types = new Class<?>[values.length];
 		for(int i = 0; i < types.length; i++) {
@@ -145,7 +92,7 @@ public class CSVTableModel extends AbstractTableModel {
 	}
 
 	public int getRowCount() {
-		return rowCount;
+		return data.length;
 	}
 
 	@Override
@@ -174,7 +121,10 @@ public class CSVTableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		try {
-			return buffer.getValueAt(rowIndex, columnIndex);
+			if(data[rowIndex] == null) {
+				throw new RuntimeException("OMG " + rowIndex);
+			}
+			return data[rowIndex][columnIndex];
 		} catch(ArrayIndexOutOfBoundsException e) {
 			return null;
 		}
