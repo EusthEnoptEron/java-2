@@ -10,6 +10,9 @@ import java.io.StreamTokenizer;
 import java.util.StringTokenizer;
 
 
+/**
+ * A very basic reader for CSV files.
+ */
 class CSVReader implements Closeable {
     private char delimiter;
     private String fileName;
@@ -32,18 +35,22 @@ class CSVReader implements Closeable {
         );
     }
 
-	public void reset() {
-		try {
-			reader.close();
-			reader = new BufferedReader(
-					new FileReader(fileName)
-			);
-		} catch(IOException e) {
-
-			//TODO: make something meaningful
-		}
+	/**
+	 * Re-initializes the reader.
+	 * @throws IOException
+	 */
+	public void reset() throws IOException {
+		reader.close();
+		reader = new BufferedReader(
+				new FileReader(fileName)
+		);
 	}
 
+	/**
+	 * Seeks forward (from the current position) a given number of lines.
+	 * @param lines number of lines to seek forward
+	 * @throws IOException
+	 */
 	public void seek(int lines) throws IOException {
 		int i = 0;
 		while(nextLine() && i < lines) {
@@ -101,26 +108,11 @@ class CSVReader implements Closeable {
         return values;
     }
 
+	/**
+	 * Closes the reader.
+	 * @throws IOException
+	 */
     public void close() throws IOException {
         reader.close();
-    }
-
-    public static void main(String[] args) {
-        try(
-                CSVReader reader = new CSVReader("my.csv", ';');
-        ) {
-            while(reader.nextLine()) {
-                while(reader.hasValues()) {
-                    System.out.print(reader.readValue() + "... ");
-                }
-                System.out.print("\n");
-            }
-        }
-        catch(FileNotFoundException e) {
-            System.out.println("File not found.");
-        }
-        catch(IOException e) {
-            System.out.println("IO Exception.");
-        }
     }
 }
