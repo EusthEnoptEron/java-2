@@ -115,4 +115,24 @@ class CSVReader implements Closeable {
     public void close() throws IOException {
         reader.close();
     }
+
+
+	public static void main(String[] args) {
+		try(
+				CSVReader reader = new CSVReader("my.csv", ';');
+		) {
+			while(reader.nextLine()) {
+				while(reader.hasValues()) {
+					System.out.print(reader.readValue() + "... ");
+				}
+				System.out.print("\n");
+			}
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("File not found.");
+		}
+		catch(IOException e) {
+			System.out.println("IO Exception.");
+		}
+	}
 }
