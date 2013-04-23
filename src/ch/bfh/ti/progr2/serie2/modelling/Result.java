@@ -7,7 +7,7 @@ package ch.bfh.ti.progr2.serie2.modelling;
  * Time: 09:39
  * To change this template use File | Settings | File Templates.
  */
-public class ModuleGradeSet {
+public class Result {
 	private Module module;
 	private Grade grade;
 
@@ -16,7 +16,7 @@ public class ModuleGradeSet {
 	 * @param module
 	 * @param grade
 	 */
-	public ModuleGradeSet(Module module, Grade grade) {
+	public Result(Module module, Grade grade) {
 		this.grade = grade;
 		this.module = module;
 	}

@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/my.csv" afterPath="$PROJECT_DIR$/my.csv" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="E:\Dev\workspace\Java2-2\src\ch\bfh\ti\progr2\serie2\modelling\ModuleGradeSet.java" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java" />
     </list>
     <ignored path="Java2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,8 +16,12 @@
     <file path="/a.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366725385688" ignored="false" />
     <file path="/CSVViewer.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366578537430" ignored="false" />
     <file path="/CSVTableModel.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366729122035" ignored="false" />
-    <file path="/Dummy.txt" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366728843774" ignored="false" />
+    <file path="/Dummy.txt" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366729459872" ignored="false" />
     <file path="/my.csv" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366728901629" ignored="false" />
+    <file path="/ModellingTest.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366731071916" ignored="false" />
+    <file path="/ModuleGradeSet.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366730405930" ignored="false" />
+    <file path="/CertificatePrinter.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366732634251" ignored="false" />
+    <file path="/Student.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366730644240" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,64 +83,82 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CSVReader.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="106" column="14" selection-start="2549" selection-end="2549" vertical-scroll-proportion="-10.88">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JFileChooser.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/javax/swing/JFileChooser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1465" column="27" selection-start="49453" selection-end="49464" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CSVViewer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVViewer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="59" selection-start="2560" selection-end="2573" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CSVTableModel.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="CSVTableModel.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="48" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.38768116">
+            <state line="52" column="51" selection-start="1495" selection-end="1495" vertical-scroll-proportion="-16.04">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Arrays.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Arrays.java">
+      <file leaf-file-name="Grade.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Grade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2243" column="34" selection-start="98270" selection-end="98276" vertical-scroll-proportion="-7.36">
+            <state line="13" column="32" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Double.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/Double.java">
+      <file leaf-file-name="ModellingTest.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="538" column="25" selection-start="21573" selection-end="21573" vertical-scroll-proportion="0.0">
+            <state line="27" column="38" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Integer.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/Integer.java">
+      <file leaf-file-name="Student.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="453" column="32" selection-start="16484" selection-end="16484" vertical-scroll-proportion="0.0">
+            <state line="76" column="18" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CertificatePrinter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="28" column="29" selection-start="922" selection-end="922" vertical-scroll-proportion="0.5303293">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="String.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/String.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2796" column="34" selection-start="111661" selection-end="111661" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Formatter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Formatter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="4130" column="9" selection-start="167017" selection-end="167017" vertical-scroll-proportion="-18.24">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StringBuilder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/StringBuilder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="72" column="26" selection-start="2464" selection-end="2464" vertical-scroll-proportion="-17.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Result.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="7" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -173,6 +197,12 @@
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java" />
         <option value="$PROJECT_DIR$/my.csv" />
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModuleGradeSet.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Certificate.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java" />
       </list>
     </option>
   </component>
@@ -266,6 +296,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="serie2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modelling" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -430,7 +464,7 @@
       </UpdatedFiles>
     </UpdateInfo>
   </component>
-  <component name="RunManager" selected="Application.CSVViewer">
+  <component name="RunManager" selected="Application.ModellingTest">
     <configuration default="false" name="CSVReader" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ch.bfh.ti.progr2.serie2.csv.CSVReader" />
@@ -468,6 +502,28 @@
       </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Debug" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ModellingTest" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ch.bfh.ti.progr2.serie2.modelling.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="ch.bfh.ti.progr2.serie2.modelling.ModellingTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Java2" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -562,14 +618,16 @@
       <patterns />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Application.CSVReader" />
       <item index="1" class="java.lang.String" itemvalue="Application.CSVViewer" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ModellingTest" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.CSVViewer" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CSVReader" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Application.ModellingTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.CSVViewer" />
+        <item index="2" class="java.lang.String" itemvalue="Application.CSVReader" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -614,7 +672,11 @@
       <created>1366728847704</created>
       <updated>1366728847704</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Little bugfix">
+      <created>1366729462064</created>
+      <updated>1366729462064</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -638,8 +700,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11953042" sideWeight="0.67074525" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -690,7 +752,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Rework class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Little bugfix" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -706,6 +768,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="Add some comments and some small changes." />
     <MESSAGE value="Rework class" />
+    <MESSAGE value="Little bugfix" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -715,65 +778,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="9" selection-start="2891" selection-end="2891" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/io/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="140" column="60" selection-start="6360" selection-end="6360" vertical-scroll-proportion="0.35166094" />
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/javax/swing/filechooser/FileFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="22" selection-start="1200" selection-end="1210" vertical-scroll-proportion="0.4696707" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="106" column="14" selection-start="2549" selection-end="2549" vertical-scroll-proportion="-10.88">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/Number.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="22" selection-start="1012" selection-end="1012" vertical-scroll-proportion="-0.3631157">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/javax/swing/JFileChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1465" column="27" selection-start="49453" selection-end="49464" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVViewer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="59" selection-start="2560" selection-end="2573" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Date.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="189" column="33" selection-start="7338" selection-end="7346" vertical-scroll-proportion="0.8201604">
@@ -802,13 +806,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2243" column="34" selection-start="98270" selection-end="98276" vertical-scroll-proportion="-7.36">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/my.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state line="5" column="43" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
@@ -818,7 +815,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="41" column="48" selection-start="1049" selection-end="1049" vertical-scroll-proportion="0.38768116">
+        <state line="52" column="51" selection-start="1495" selection-end="1495" vertical-scroll-proportion="-16.04">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="76" column="18" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Grade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="32" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/AbstractStringBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="170" column="42" selection-start="5114" selection-end="5114" vertical-scroll-proportion="0.1559792">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/StringBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="26" selection-start="2464" selection-end="2464" vertical-scroll-proportion="-17.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2243" column="34" selection-start="98270" selection-end="98276" vertical-scroll-proportion="0.33333334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="7" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="38" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/String.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2796" column="34" selection-start="111661" selection-end="111661" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Formatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4130" column="9" selection-start="167017" selection-end="167017" vertical-scroll-proportion="-18.24">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="29" selection-start="922" selection-end="922" vertical-scroll-proportion="0.5303293">
           <folding />
         </state>
       </provider>
