@@ -24,7 +24,7 @@ public class FileFinder {
 	/**
 	 * Represents the result of a search.
 	 */
-	class SearchResult {
+	static class SearchResult {
 		ArrayList<File> files = new ArrayList<>();
 		private SearchResult() {}
 
