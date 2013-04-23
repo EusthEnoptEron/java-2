@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATM.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATMSimulator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Bank.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/BankAccount.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Customer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Dev\workspace\Java2-2\src\ch\bfh\ti\progr2\serie2\modelling\ModuleGradeSet.java" afterPath="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java" />
     </list>
     <ignored path="Java2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,12 +17,19 @@
     <file path="/a.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366725385688" ignored="false" />
     <file path="/CSVViewer.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366578537430" ignored="false" />
     <file path="/CSVTableModel.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366729122035" ignored="false" />
-    <file path="/Dummy.txt" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366729459872" ignored="false" />
+    <file path="/Dummy.txt" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366739058650" ignored="false" />
     <file path="/my.csv" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366728901629" ignored="false" />
     <file path="/ModellingTest.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366731071916" ignored="false" />
     <file path="/ModuleGradeSet.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366730405930" ignored="false" />
     <file path="/CertificatePrinter.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366732634251" ignored="false" />
     <file path="/Student.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366730644240" ignored="false" />
+    <file path="/FileFinder.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366735888454" ignored="false" />
+    <file path="/FileFinderTester.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366736359049" ignored="false" />
+    <file path="/Customer.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366741044787" ignored="false" />
+    <file path="/Bank.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366740850780" ignored="false" />
+    <file path="/ATMSimulator.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366741371858" ignored="false" />
+    <file path="/ATM.java" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366746605786" ignored="false" />
+    <file path="/a.dummy" changelist="aee0cd6a-3e06-4c08-afd7-3134d246b7d1" time="1366750036275" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +37,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Java2$ATMSimulator.coverage" NAME="ATMSimulator Coverage Results" MODIFIED="1366741097632" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ch.bfh.ti.progr2.serie2.atm.*</FILTER>
+    </SUITE>
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -36,8 +49,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -74,6 +85,8 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -83,91 +96,90 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="CSVTableModel.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java">
+      <file leaf-file-name="PrintStream.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/io/PrintStream.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="51" selection-start="1495" selection-end="1495" vertical-scroll-proportion="-16.04">
+            <state line="832" column="60" selection-start="28273" selection-end="28279" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grade.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Grade.java">
+      <file leaf-file-name="FileFinderTester.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/filefinder/FileFinderTester.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="32" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
+            <state line="15" column="22" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ATMSimulator.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATMSimulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="1" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#501#530#1" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ATM.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATM.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="29" column="24" selection-start="705" selection-end="705" vertical-scroll-proportion="0.48243243">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Customer.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Customer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="18" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ModellingTest.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java">
+      <file leaf-file-name="BankAccount.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/BankAccount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="38" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
+            <state line="47" column="30" selection-start="883" selection-end="883" vertical-scroll-proportion="-31.96">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Student.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java">
+      <file leaf-file-name="Bank.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="76" column="18" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
+            <state line="34" column="24" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customers.txt" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/customers.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="6" selection-start="68" selection-end="72" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CertificatePrinter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java">
+      <file leaf-file-name="FileFinder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/filefinder/FileFinder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="29" selection-start="922" selection-end="922" vertical-scroll-proportion="0.5303293">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="String.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/String.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2796" column="34" selection-start="111661" selection-end="111661" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Formatter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Formatter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4130" column="9" selection-start="167017" selection-end="167017" vertical-scroll-proportion="-18.24">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringBuilder.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/StringBuilder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="26" selection-start="2464" selection-end="2464" vertical-scroll-proportion="-17.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Result.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="7" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my.csv" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/my.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="43" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+            <state line="147" column="39" selection-start="3302" selection-end="3302" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -191,8 +203,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../bfh_sources/java2/csv/CSVReader.java" />
-        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CsvReader.java" />
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVViewer.java" />
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java" />
         <option value="$PROJECT_DIR$/my.csv" />
@@ -203,6 +213,12 @@
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Certificate.java" />
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java" />
         <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/filefinder/FileFinder.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/filefinder/FileFinderTester.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Bank.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Customer.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATMSimulator.java" />
+        <option value="$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATM.java" />
       </list>
     </option>
   </component>
@@ -243,7 +259,7 @@
     <OptionsSetting value="true" id="Edit" />
     <OptionsSetting value="true" id="Undo Check Out" />
     <OptionsSetting value="true" id="Get Latest Version" />
-    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="2" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -262,6 +278,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -298,8 +315,26 @@
               <option name="myItemId" value="serie2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modelling" />
+              <option name="myItemId" value="Java2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Java2-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serie2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="filefinder" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -321,13 +356,52 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="csv" />
+              <option name="myItemId" value="atm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Java2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Java2-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="serie2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="atm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ATM.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Java2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Java2-2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -344,127 +418,16 @@
     <property name="FullScreen" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
-  <component name="RestoreUpdateTree">
-    <UpdateInfo date="Moments ago" ActionInfo="_Update">
-      <UpdatedFiles>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated from server" />
-          <option name="myStatusName" value="Changed on server" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CHANGED_ON_SERVER" />
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Updated" />
-            <option name="myStatusName" value="Changed" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="UPDATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVReader.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Created" />
-            <option name="myStatusName" value="Created" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="CREATED" />
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Grade.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Module.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModuleGradeSet.java</PATH>
-            <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java</PATH>
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Deleted" />
-            <option name="myStatusName" value="Deleted" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="true" />
-            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          </FILE-GROUP>
-          <FILE-GROUP>
-            <option name="myUpdateName" value="Restored" />
-            <option name="myStatusName" value="Will be restored" />
-            <option name="mySupportsDeletion" value="false" />
-            <option name="myCanBeAbsent" value="false" />
-            <option name="myId" value="RESTORED" />
-          </FILE-GROUP>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Modified" />
-          <option name="myStatusName" value="Modified" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MODIFIED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Skipped" />
-          <option name="myStatusName" value="Skipped" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SKIPPED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with conflicts" />
-          <option name="myStatusName" value="Will be merged with conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_CONFLICTS" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with tree conflicts" />
-          <option name="myStatusName" value="Merged with tree conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged with property conflicts" />
-          <option name="myStatusName" value="Will be merged with property conflicts" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Merged" />
-          <option name="myStatusName" value="Will be merged" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="MERGED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Not in repository" />
-          <option name="myStatusName" value="Not in repository" />
-          <option name="mySupportsDeletion" value="true" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UNKNOWN" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally added" />
-          <option name="myStatusName" value="Locally added" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_ADDED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Locally removed" />
-          <option name="myStatusName" value="Locally removed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="LOCALLY_REMOVED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Switched" />
-          <option name="myStatusName" value="Switched" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="SWITCHED" />
-        </FILE-GROUP>
-      </UpdatedFiles>
-    </UpdateInfo>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Dev\workspace\Java2-2\src\ch\bfh\ti\progr2\serie2\atm" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.ModellingTest">
+  <component name="RunManager" selected="Application.ATMSimulator">
     <configuration default="false" name="CSVReader" type="Application" factoryName="Application" temporary="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="ch.bfh.ti.progr2.serie2.csv.CSVReader" />
@@ -527,6 +490,52 @@
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
+    <configuration default="false" name="FileFinderTester" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ch.bfh.ti.progr2.serie2.filefinder.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="ch.bfh.ti.progr2.serie2.filefinder.FileFinderTester" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Java2" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ATMSimulator" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="ch.bfh.ti.progr2.serie2.atm.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="ch.bfh.ti.progr2.serie2.atm.ATMSimulator" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Java2" />
+      <envs />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
@@ -539,19 +548,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -580,6 +576,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -618,16 +627,20 @@
       <patterns />
       <method />
     </configuration>
-    <list size="3">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.CSVReader" />
       <item index="1" class="java.lang.String" itemvalue="Application.CSVViewer" />
       <item index="2" class="java.lang.String" itemvalue="Application.ModellingTest" />
+      <item index="3" class="java.lang.String" itemvalue="Application.FileFinderTester" />
+      <item index="4" class="java.lang.String" itemvalue="Application.ATMSimulator" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.ModellingTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.CSVViewer" />
-        <item index="2" class="java.lang.String" itemvalue="Application.CSVReader" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.ATMSimulator" />
+        <item index="1" class="java.lang.String" itemvalue="Application.FileFinderTester" />
+        <item index="2" class="java.lang.String" itemvalue="Application.ModellingTest" />
+        <item index="3" class="java.lang.String" itemvalue="Application.CSVViewer" />
+        <item index="4" class="java.lang.String" itemvalue="Application.CSVReader" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -676,7 +689,15 @@
       <created>1366729462064</created>
       <updated>1366729462064</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add some new classes and implement printer.">
+      <created>1366732694562</created>
+      <updated>1366732694562</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implement FileFinder">
+      <created>1366739068414</created>
+      <updated>1366739068414</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -693,15 +714,16 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.13014461" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32786885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977587" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11953042" sideWeight="0.67074525" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32925472" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11953042" sideWeight="0.8520578" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14794216" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Documentation" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="92" y="92" width="1736" height="856" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -752,7 +774,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Little bugfix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement FileFinder" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -769,6 +791,8 @@
     <MESSAGE value="Add some comments and some small changes." />
     <MESSAGE value="Rework class" />
     <MESSAGE value="Little bugfix" />
+    <MESSAGE value="Add some new classes and implement printer." />
+    <MESSAGE value="Implement FileFinder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -778,115 +802,129 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Date.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/filefinder/FileFinderTester.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="189" column="33" selection-start="7338" selection-end="7346" vertical-scroll-proportion="0.8201604">
+        <state line="15" column="22" selection-start="385" selection-end="385" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.994/Total.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Temp/java/ch22/section_4/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="4" selection-start="259" selection-end="259" vertical-scroll-proportion="0.3529412">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/Integer.java">
+    <entry file="file://D:/Temp/java/ch20/section_4/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="453" column="32" selection-start="16484" selection-end="16484" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Temp/java/ch23/worked_example_1/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="27" column="32" selection-start="833" selection-end="833" vertical-scroll-proportion="0.7941176">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/filefinder/FileFinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="39" selection-start="3302" selection-end="3302" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Calendar.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1240" column="22" selection-start="46883" selection-end="46883" vertical-scroll-proportion="0.33333334">
+        <state line="603" column="66" selection-start="22279" selection-end="22279" vertical-scroll-proportion="0.39100346">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/Double.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Hashtable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="538" column="25" selection-start="21573" selection-end="21573" vertical-scroll-proportion="0.0">
+        <state line="456" column="26" selection-start="16636" selection-end="16636" vertical-scroll-proportion="0.50865054">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/my.csv">
+    <entry file="file://$PROJECT_DIR$/customers.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="43" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+        <state line="6" column="6" selection-start="68" selection-end="72" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/csv/CSVTableModel.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/BankAccount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="51" selection-start="1495" selection-end="1495" vertical-scroll-proportion="-16.04">
+        <state line="47" column="30" selection-start="883" selection-end="883" vertical-scroll-proportion="-31.96">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Student.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Customer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="76" column="18" selection-start="1562" selection-end="1562" vertical-scroll-proportion="0.0">
+        <state line="10" column="18" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Grade.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATMSimulator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="32" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
+        <state line="11" column="1" selection-start="221" selection-end="221" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#501#530#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="904" column="24" selection-start="34216" selection-end="34216" vertical-scroll-proportion="0.28648648">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/AbstractStringBuilder.java">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/transactions.0.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="42" selection-start="5114" selection-end="5114" vertical-scroll-proportion="0.1559792">
+        <state line="20" column="40" selection-start="682" selection-end="685" vertical-scroll-proportion="0.45945945">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/StringBuilder.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="26" selection-start="2464" selection-end="2464" vertical-scroll-proportion="-17.0">
-          <folding />
+        <state line="34" column="24" selection-start="777" selection-end="777" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Arrays.java">
+    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/atm/ATM.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2243" column="34" selection-start="98270" selection-end="98276" vertical-scroll-proportion="0.33333334">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/Result.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="7" selection-start="269" selection-end="269" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/ModellingTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="38" selection-start="952" selection-end="952" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/lang/String.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2796" column="34" selection-start="111661" selection-end="111661" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_07/src.zip!/java/util/Formatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4130" column="9" selection-start="167017" selection-end="167017" vertical-scroll-proportion="-18.24">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ch/bfh/ti/progr2/serie2/modelling/CertificatePrinter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="29" selection-start="922" selection-end="922" vertical-scroll-proportion="0.5303293">
-          <folding />
+        <state line="29" column="24" selection-start="705" selection-end="705" vertical-scroll-proportion="0.48243243">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
