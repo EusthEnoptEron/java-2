@@ -30,24 +30,23 @@ public class CSVTableModel extends AbstractTableModel {
 				CSVReader reader = new CSVReader(filename, delimiter);
 		) {
 			ArrayList<Object[]> tmpData = new ArrayList<>();
-			int rowCount = 0;
+			int i = 0;
 
 			// Loop through the file once to analyze its contents
 			while(reader.nextLine()) {
 				Object[] values = reader.readValues();
 				columnCount = Math.max(columnCount, values.length);
 
-				if(rowCount == 0) {
+				if(i == 0) {
 					// Analyze first row
 					types = analyzeValues(values);
-				}  else if(rowCount == 1) {
+				}  else if(i == 1) {
 					// Analyze second row and check if it's the same as the first one
 					Class<?>[] tempTypes = analyzeValues(values);
 					if(!Arrays.equals(tempTypes, types)) {
 						// They're different, so we'll assume the first line was the title line
 						types = tempTypes;
 						titleValues = tmpData.remove(0);
-						rowCount--;
 					} else {
 						tmpData.set(0, convertValues(tmpData.get(0)));
 					}
@@ -55,7 +54,7 @@ public class CSVTableModel extends AbstractTableModel {
 				} else {
 					values = convertValues(values);
 				}
-				rowCount++;
+				i++;
 				tmpData.add(values);
 			}
 
@@ -89,6 +88,12 @@ public class CSVTableModel extends AbstractTableModel {
 		return results;
 	}
 
+	/**
+	 * Convert a value to a certain type (Number / Date / Boolean)
+	 * @param val
+	 * @param type
+	 * @return
+	 */
 	private Object convertValue(String val, Class<?> type) {
 		Object result = val;
 		val = val.toLowerCase();
