@@ -83,6 +83,7 @@ class CSVReader implements Closeable {
      * @return whether or not there are still any values to read
      */
     public boolean hasValues() {
+	    assert tokenizer != null;
         return tokenizer.hasMoreTokens();
     }
 
@@ -91,8 +92,14 @@ class CSVReader implements Closeable {
      * @return the next value
      */
     public String readValue() {
-        return tokenizer.nextToken();
+	    assert tokenizer != null;
+        return tokenizer.nextToken().trim();
     }
+
+	public int countValues() {
+		if(tokenizer != null) return tokenizer.countTokens();
+		else return 0;
+	}
 
     /**
      * Returns all values of the line as an array. Either call this or {@see readValue()}
@@ -100,6 +107,7 @@ class CSVReader implements Closeable {
      * @return
      */
     public String[] readValues() {
+	    assert tokenizer != null;
         String[] values = new String[tokenizer.countTokens()];
         int i = 0;
         while(hasValues()) {
@@ -118,6 +126,7 @@ class CSVReader implements Closeable {
 
 
 	public static void main(String[] args) {
+
 		try(
 				CSVReader reader = new CSVReader("my.csv", ';');
 		) {

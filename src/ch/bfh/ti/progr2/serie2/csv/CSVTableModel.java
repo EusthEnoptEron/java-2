@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -16,62 +17,51 @@ import java.util.Date;
 public class CSVTableModel extends AbstractTableModel {
 	// The data & title row
 	Object[][] data;
-	String[] titleValues;
+	Object[] titleValues;
 
 	// List of types in the current CSV file
 	Class<?>[] types;
 
 	// Row and column count
-	int rowCount = 0;
 	int columnCount = 0;
 
 	CSVTableModel(String filename, char delimiter) {
 		try (
 				CSVReader reader = new CSVReader(filename, delimiter);
 		) {
-			boolean hasTitleLine = false;
+			ArrayList<Object[]> tmpData = new ArrayList<>();
+			int rowCount = 0;
+
 			// Loop through the file once to analyze its contents
 			while(reader.nextLine()) {
+				Object[] values = reader.readValues();
+				columnCount = Math.max(columnCount, values.length);
+
 				if(rowCount == 0) {
 					// Analyze first row
-					types = analyzeValues(reader.readValues());
+					types = analyzeValues(values);
 				}  else if(rowCount == 1) {
 					// Analyze second row and check if it's the same as the first one
-					Class<?>[] tempTypes = analyzeValues(reader.readValues());
+					Class<?>[] tempTypes = analyzeValues(values);
 					if(!Arrays.equals(tempTypes, types)) {
 						// They're different, so we'll assume the first line was the title line
 						types = tempTypes;
-						hasTitleLine = true;
+						titleValues = tmpData.remove(0);
+						rowCount--;
+					} else {
+						tmpData.set(0, convertValues(tmpData.get(0)));
 					}
-				} else if(rowCount < 10) {
-					//TODO
-				/*	if(!analyzeValues(reader.readValues()).equals(types) ) {
-						throw new RuntimeException("Value types are not coherent!");
-					}*/
+					values = convertValues(values);
+				} else {
+					values = convertValues(values);
 				}
 				rowCount++;
+				tmpData.add(values);
 			}
 
-			// Reset reader
-			reader.reset();
-
-			// If we found out that there's a title line, we'll preliminarily remove it
-			if(hasTitleLine) {
-				rowCount--;
-				reader.nextLine();
-				titleValues = reader.readValues();
-			}
 
 			// Create a new array with the appropriate size
-			data = new Object[rowCount][];
-
-			// Populate (and adjust the column width)
-			int i = 0;
-			while(reader.nextLine()) {
-				String[] values = reader.readValues();
-				columnCount = Math.max(columnCount, values.length);
-				data[i++] = values;
-			}
+			data = tmpData.toArray(new Object[0][]);
 		}
 		catch(FileNotFoundException e) {
 			System.out.println("File not found.");
@@ -81,20 +71,78 @@ public class CSVTableModel extends AbstractTableModel {
 		}
 	}
 
+	private Object[] convertValues(Object[] vals) {
+		Object[] results = new Object[vals.length];
+
+		for(int i = 0; i < vals.length; i++) {
+			if(i < types.length) {
+				Object res = convertValue(vals[i].toString(), types[i]);
+				if(res == null) {
+					types[i] = Object.class;
+				} else {
+					results[i] = res;
+				}
+			} else {
+				results[i] = vals[i];
+			}
+		}
+		return results;
+	}
+
+	private Object convertValue(String val, Class<?> type) {
+		Object result = val;
+		val = val.toLowerCase();
+		if(type.equals(Number.class)) {
+			try {
+				result = Integer.parseInt(val);
+			} catch(NumberFormatException e) {
+				try {
+					result = Double.parseDouble(val);
+				}
+				catch(NumberFormatException e2) {
+					result = null;
+				}
+			}
+		} else if(type.equals(Date.class)) {
+			if(val.length() == 10) {
+				try {
+					int year  = Integer.parseInt(val.substring(0, 4));
+					int month = Integer.parseInt(val.substring(5, 7));
+					int day   = Integer.parseInt(val.substring(8, 10));
+
+					Calendar cal =  Calendar.getInstance();
+					cal.set(year, month - 1, day);
+					result = cal.getTime();
+				} catch(NumberFormatException e) {
+					result = null;
+				}
+			}
+		} else if(type.equals(Boolean.class)) {
+			if(val.equals("true")) {
+				result = true;
+			} else if(val.equals("false")) {
+				result = false;
+			} else {
+				result = null;
+			}
+		}
+		return result;
+	}
+
 	/**
 	 * Analyzes an array of values for their types
 	 * @param values values to analyze
 	 * @return array of types
 	 */
-	private Class<?>[] analyzeValues(String[] values) {
+	private Class<?>[] analyzeValues(Object[] values) {
 		Class<?>[] types = new Class<?>[values.length];
 
 		for(int i = 0; i < types.length; i++) {
 			// Make lower-case to simplify the following checks
-			String val = values[i].toLowerCase();
+			String val = values[i].toString().toLowerCase();
 			// We differentiate between Boolean, Number, Date, and Object
 			try {
-				Integer.parseInt(val);
+				Double.parseDouble(val);
 				types[i] = Number.class;
 			} catch(NumberFormatException e) {
 				if(val.equals("true") || val.equals("false") ) {
@@ -126,7 +174,7 @@ public class CSVTableModel extends AbstractTableModel {
 	 */
 	@Override
 	public int getColumnCount() {
-		return types.length;
+		return columnCount;
 	}
 
 	/**
@@ -137,7 +185,7 @@ public class CSVTableModel extends AbstractTableModel {
 	@Override
 	public String getColumnName(int columnIndex) {
 		if(titleValues != null && columnIndex < titleValues.length) {
-			return titleValues[columnIndex];
+			return titleValues[columnIndex].toString();
 		} else {
 			return super.getColumnName(columnIndex);
 		}
@@ -166,9 +214,6 @@ public class CSVTableModel extends AbstractTableModel {
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		try {
-			if(data[rowIndex] == null) {
-				throw new RuntimeException("OMG " + rowIndex);
-			}
 			return data[rowIndex][columnIndex];
 		} catch(ArrayIndexOutOfBoundsException e) {
 			return null;

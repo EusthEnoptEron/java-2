@@ -1,2 +1,6 @@
-My;Test;Hey
-How;Are;You
+Name ; Weight; Height; Vegetarian
+Joe Dalton; 45; 1.34; false
+Jolly Jumper; 560; 1.65; true
+Lucky Luke; 67; 1.78; false
+Ma Dalton; 42; 1.30; false; 1
+Averell Dalton; 58; 1.82; false
