@@ -3,11 +3,7 @@ package ch.bfh.ti.progr2.serie2.modelling;
 import java.util.ArrayList;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 22.04.13
- * Time: 09:39
- * To change this template use File | Settings | File Templates.
+ * A student who can have a list of results.
  */
 public class Student {
 	private String name;
@@ -17,7 +13,7 @@ public class Student {
 
 	/**
 	 * Creates a new student.
-	 * @param id unique ID of the student.
+	 * @param id unique ID of the student (no check is made - this is a responsibility of the DB)
 	 * @param name name of the student
 	 */
 	public Student(int id, String name) {

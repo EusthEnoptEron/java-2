@@ -1,11 +1,7 @@
 package ch.bfh.ti.progr2.serie2.modelling;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 13/04/23
- * Time: 17:21
- * To change this template use File | Settings | File Templates.
+ * A printer that's used to make a textual representation of a student's results.
  */
 public class CertificatePrinter {
 	private static final int WIDTH = 80;
@@ -15,6 +11,11 @@ public class CertificatePrinter {
 	private static final int ECTS_WIDTH = 10 -4;
 
 
+	/**
+	 * Makes a textual representation of the student's results
+	 * @param student student in question
+	 * @return a certificate
+	 */
 	public String getCertificate(Student student) {
 		StringBuilder builder = new StringBuilder();
 

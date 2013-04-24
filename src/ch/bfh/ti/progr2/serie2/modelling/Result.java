@@ -1,11 +1,7 @@
 package ch.bfh.ti.progr2.serie2.modelling;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 22.04.13
- * Time: 09:39
- * To change this template use File | Settings | File Templates.
+ * Represents a result (a module and a grade)
  */
 public class Result {
 	private Module module;
@@ -37,6 +33,10 @@ public class Result {
 		return grade;
 	}
 
+	/**
+	 * Returns whether or not the student has passed this module
+	 * @return whether or not the student has passed this module
+	 */
 	public boolean hasPassed() {
 		return grade.isEligibleForEcts();
 	}
