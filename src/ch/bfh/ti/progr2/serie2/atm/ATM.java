@@ -31,16 +31,15 @@ public class ATM
 		reset();
 
 		// Set up logger
-		logger = Logger.getLogger(ATMSimulator.class .getName());
+		logger = Logger.getLogger(ATMSimulator.class.getName());
 		try {
 			// %t (win7) = C:\Users\USER\AppData\Local\Temp\
 			// %g = log-file index
 			FileHandler fileHandler = new FileHandler("%ttransactions.%g.xml",MAX_SIZE * 1024, LOG_FILES);
+			// Suppress standard log output
 			logger.setUseParentHandlers(false);
 			logger.addHandler(fileHandler);
-		} catch (SecurityException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (SecurityException | IOException e) {
 			e.printStackTrace();
 		}
 	}

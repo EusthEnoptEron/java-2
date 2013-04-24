@@ -32,11 +32,13 @@ public class Bank {
 			throws IOException {
 		Scanner in = new Scanner(new File(filename));
 		while (in.hasNext()) {
+			// Read values
 			int number = in.nextInt();
 			int pin = in.nextInt();
 			int checkingAccountId = in.nextInt();
 			int savingsAccountId = in.nextInt();
 
+			// Create accounts if needed
 			BankAccount checkingAccount = accounts.get(checkingAccountId);
 			if (checkingAccount == null) {
 				checkingAccount = new BankAccount(0.0);
@@ -48,6 +50,7 @@ public class Bank {
 				accounts.put(savingsAccountId, savingsAccount);
 			}
 
+			// Create customer
 			Customer c = new Customer(number, pin, checkingAccount, savingsAccount);
 			addCustomer(c);
 		}
