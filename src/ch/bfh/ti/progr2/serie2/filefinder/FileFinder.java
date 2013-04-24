@@ -13,8 +13,6 @@ import java.util.Iterator;
  * A class for searching a directory, based on a RegEx pattern.
  */
 public class FileFinder {
-	private File root;
-
 	private int maxDepth = -1;
 	private PatternConstraint constraint = PatternConstraint.FILENAME;
 
@@ -64,44 +62,6 @@ public class FileFinder {
 	}
 
 	/**
-	 * Creates a new FileFinder bound to a directory.
-	 * @param root directory to search
-	 * @throws FileNotFoundException
-	 */
-	public FileFinder(String root) throws FileNotFoundException {
-		this(new File(root));
-	}
-
-	/**
-	 * Creates a new FileFinder bound to a directory.
-	 * @param root directory to search
-	 * @throws FileNotFoundException
-	 */
-	public FileFinder(File root) throws FileNotFoundException {
-		changeDirectory(root);
-	}
-
-	/**
-	 * Change CWD (of this class) to dir
-	 * @param dir directory to change to
-	 * @throws FileNotFoundException if the file was not found
-	 */
-	public void changeDirectory(File dir) throws FileNotFoundException {
-		if(!root.exists()) {
-			throw new FileNotFoundException("The root directory you specified does not exist");
-		}
-		root = dir;
-	}
-
-	/**
-	 * Returns the directory the file searcher is currently attached to
-	 * @return
-	 */
-	public File getCurrentDirectory() {
-		return root;
-	}
-
-	/**
 	 * Gets the maximal depth. (the number of folders to dive into before giving up)
 	 * @return
 	 */
@@ -133,17 +93,29 @@ public class FileFinder {
 		this.constraint = constraint;
 	}
 
+	/**
+	 * Starts a search for a pattern.
+	 * @param dir directory to search
+	 * @param pattern pattern to search for
+	 * @return the result of the search - if the directory does not exist or is a file, you will simply get an empty result.
+	 * @throws java.util.regex.PatternSyntaxException if the pattern is incorrect
+	 */
+	public SearchResult search(String dir, String pattern) {
+		return search(new File(dir), pattern);
+	}
 
 	/**
 	 * Starts a search for a pattern.
+	 * @param dir directory to search
 	 * @param pattern pattern to search for
-	 * @return the result of the search
+	 * @return the result of the search - if the directory does not exist or is a file, you will simply get an empty result.
+	 * @throws java.util.regex.PatternSyntaxException if the pattern is incorrect
 	 */
-	public SearchResult search(String pattern) {
+	public SearchResult search(File dir, String pattern) {
 		SearchResult result = new SearchResult();
 
 		// Conduct search operation
-		search(root, pattern, result, 0);
+		search(dir, pattern, result, 0);
 
 		return result;
 	}

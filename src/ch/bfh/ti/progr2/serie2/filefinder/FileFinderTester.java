@@ -2,6 +2,7 @@ package ch.bfh.ti.progr2.serie2.filefinder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.regex.PatternSyntaxException;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,12 +21,12 @@ public class FileFinderTester {
 		FileFinder finder;
 
 		try {
-			finder = new FileFinder(dir);
+			finder = new FileFinder();
 			finder.setMaxDepth(limit);
 
 			System.out.print("Search "+dir+" for '"+pattern+"'...");
 
-			FileFinder.SearchResult result = finder.search(pattern);
+			FileFinder.SearchResult result = finder.search(dir, pattern);
 			System.out.println(" Done!");
 			System.out.printf("Found %d files, which amount to %.2fKB\n", result.getCount(),  (result.getSize() / 1024.0));
 			System.out.println("--------------------");
@@ -34,11 +35,10 @@ public class FileFinderTester {
 			for(File file: result.getFiles()) {
 				System.out.println("* " + file.getAbsolutePath());
 			}
-			System.out.println();
-
-
-		} catch(FileNotFoundException e) {
-			System.out.println("ERROR: File not found");
+		} catch(PatternSyntaxException e) {
+			System.out.println("Pattern is incorrect!");
 		}
+
+		System.out.println();
 	}
 }
