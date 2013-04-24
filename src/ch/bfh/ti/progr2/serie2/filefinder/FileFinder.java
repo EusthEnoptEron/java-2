@@ -132,25 +132,30 @@ public class FileFinder {
 		return result;
 	}
 
+	// Search node (a directory) for a pattern
 	private void search(File node, String pattern, SearchResult result, int level) {
-		if(node.isFile()) {
-			// File
-			String str;
-			if(constraint.equals(PatternConstraint.FILENAME)) {
-				str = node.getName();
-			} else {
-				str = node.getAbsolutePath();
-			}
-			if(str.matches(pattern)) {
-				result.addFile(node);
-			}
-		} else if(node.isDirectory() && node.canRead()) {
-			if(maxDepth >= 0 && level > maxDepth) return;
+		// Check if we're too deep
+		if(maxDepth >= 0 && level > maxDepth) return;
 
-			File[] files = node.listFiles();
-			if(files != null) {
-				// Directory
-				for(File file: files) {
+		// Try to get a list of file and loop through them
+		File[] files = node.listFiles();
+		if(files != null) {
+			for(File file: files) {
+				if(file.isFile()) {
+					// FILE: Check if the file matches the pattern
+					// -> Determine if we match the filename or the absolute path
+					String str;
+					if(constraint.equals(PatternConstraint.FILENAME))
+						str = file.getName();
+					else
+						str = file.getAbsolutePath();
+
+					// Match
+					if(str.matches(pattern)) {
+						result.addFile(file);
+					}
+				} else {
+					// DIRECTORY: Search the directory
 					search(file, pattern, result, level + 1);
 				}
 			}

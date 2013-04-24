@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 public class FileFinderTester {
 	public static void main(String[] args) {
 //		search("C:/Windows", "hosts", 3);
-		search("E:/Dev", ".*[.]js$", 2);
+		search("E:/Dev", ".*[.]js$", 5);
 	}
 
 	private static void search(String dir, String pattern, int limit) {
