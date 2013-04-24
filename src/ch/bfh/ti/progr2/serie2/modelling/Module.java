@@ -1,11 +1,7 @@
 package ch.bfh.ti.progr2.serie2.modelling;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 22.04.13
- * Time: 09:38
- * To change this template use File | Settings | File Templates.
+ * Representation of a module.
  */
 public class Module {
 	private String abbreviation;
@@ -14,9 +10,9 @@ public class Module {
 
 	/**
 	 * Creates a new module definition.
-	 * @param abbreviation
-	 * @param description
-	 * @param ects
+	 * @param abbreviation short name
+	 * @param description long name
+	 * @param ects number of ECTS awarded for this module
 	 */
 	public Module(String abbreviation, String description, int ects) {
 		this.abbreviation = abbreviation;

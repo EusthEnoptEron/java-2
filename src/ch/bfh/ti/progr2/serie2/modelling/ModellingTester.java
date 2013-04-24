@@ -1,13 +1,9 @@
 package ch.bfh.ti.progr2.serie2.modelling;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 13/04/23
- * Time: 17:18
- * To change this template use File | Settings | File Templates.
+ * Short tester class that prints out a certificate.
  */
-public class ModellingTest {
+public class ModellingTester {
 	private static Module[] modules = new Module[]{
 		new Module("PROGR1", "Introduction to Java Programming", 6),
 		new Module("PROGR2", "Java Concepts andMethods", 6),
@@ -19,6 +15,7 @@ public class ModellingTest {
 		new Module("CRYPTO", "Applied Cryptography", 2),
 		new Module("NETD", "Networks design", 4),
 	};
+
 	public static void main(String[] args) {
 
 		CertificatePrinter printer = new CertificatePrinter();
