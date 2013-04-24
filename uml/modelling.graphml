@@ -18,26 +18,33 @@
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="193.0" width="190.0" x="126.50000000000006" y="247.0"/>
+          <y:Geometry height="193.0" width="212.0" x="143.50000000000006" y="247.0"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="52.3818359375" x="68.80908203125" y="3.0">Student<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="52.3818359375" x="79.80908203125" y="3.0">Student<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
               <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="-0.03703090122767855" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
             </y:ModelParameter>
           </y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="222.103515625" x="-5.0517578125" y="87.1494140625">(simple getter and setters are not shown)<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
           <y:UML clipContent="false" constraint="" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel>id : int
 name : String
-results : ArrayList&lt;Result&gt;</y:AttributeLabel>
-            <y:MethodLabel>addResult(Module, Grade) : void
+results : Hashtable&lt;Term, Result[]&gt;</y:AttributeLabel>
+            <y:MethodLabel>addResult(Term, Module, Grade) : void
 getEcts() : int
-getModules() : Module[]
-getResults() : Result[]
-getId() : int
-getName() : String</y:MethodLabel>
+getEcts(Term) : int
+getResults(Term) : Result[]
+getCertificate(Term) : Certificate
+getModules() : Module[]</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -46,10 +53,10 @@ getName() : String</y:MethodLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="147.0" width="197.0" x="564.0" y="375.0"/>
+          <y:Geometry height="95.0" width="143.0" x="564.0" y="375.0"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="43.72998046875" x="76.635009765625" y="3.0">Result<y:LabelModel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="43.72998046875" x="49.635009765625" y="3.0">Result<y:LabelModel>
               <y:SmartNodeLabelModel distance="4.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -59,9 +66,7 @@ getName() : String</y:MethodLabel>
           <y:UML clipContent="false" constraint="" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel>module : Module
 grade : Grade</y:AttributeLabel>
-            <y:MethodLabel>getModule() : Module
-getGrade() : Grade
-hasPassed() : boolean</y:MethodLabel>
+            <y:MethodLabel>hasPassed() : boolean</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -70,7 +75,7 @@ hasPassed() : boolean</y:MethodLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="87.0" width="197.0" x="405.0" y="103.0"/>
+          <y:Geometry height="87.0" width="197.0" x="395.0" y="144.0"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="41.57177734375" x="77.714111328125" y="26.701171875">Grade<y:LabelModel>
@@ -91,7 +96,7 @@ hasPassed() : boolean</y:MethodLabel>
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="147.0" width="197.0" x="733.0" y="87.80000000000007"/>
+          <y:Geometry height="80.0" width="197.0" x="709.0" y="173.80000000000007"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="49.49365234375" x="73.753173828125" y="3.0">Module<y:LabelModel>
@@ -105,10 +110,7 @@ hasPassed() : boolean</y:MethodLabel>
             <y:AttributeLabel>abbreviation : String
 description : String
 ects : int</y:AttributeLabel>
-            <y:MethodLabel>getAbbreviation() : String
-getDescription() : String
-getEcts() : int
-</y:MethodLabel>
+            <y:MethodLabel/>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -117,7 +119,7 @@ getEcts() : int
       <data key="d4"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="67.0" width="197.0" x="-197.49999999999994" y="287.0"/>
+          <y:Geometry height="67.0" width="197.0" x="-138.49999999999994" y="310.0"/>
           <y:Fill color="#FFFFFF" color2="#FFFFFF" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.92626953125" modelName="custom" textColor="#000000" visible="true" width="109.47900390625" x="43.760498046875" y="3.0">CertificatePrinter<y:LabelModel>
@@ -129,7 +131,7 @@ getEcts() : int
           </y:NodeLabel>
           <y:UML clipContent="false" constraint="" omitDetails="false" stereotype="" use3DEffect="false">
             <y:AttributeLabel/>
-            <y:MethodLabel>getCertificate(Student) : String</y:MethodLabel>
+            <y:MethodLabel>print(Certificate) : void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -179,6 +181,24 @@ results : Result[]</y:AttributeLabel>
         </y:UMLClassNode>
       </data>
     </node>
+    <node id="n7">
+      <data key="d5"/>
+      <data key="d6">
+        <y:ShapeNode>
+          <y:Geometry height="30.0" width="232.00000000000006" x="79.5" y="172.5"/>
+          <y:Fill color="#9EC5D0" transparent="false"/>
+          <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" textColor="#000000" visible="true" width="201.443359375" x="15.278320312500028" y="5.6494140625">simple getters and setters are hidden<y:LabelModel>
+              <y:SmartNodeLabelModel distance="4.0"/>
+            </y:LabelModel>
+            <y:ModelParameter>
+              <y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/>
+            </y:ModelParameter>
+          </y:NodeLabel>
+          <y:Shape type="rectangle"/>
+        </y:ShapeNode>
+      </data>
+    </node>
     <edge id="e0" source="n1" target="n2">
       <data key="d8"/>
       <data key="d10">
@@ -186,7 +206,7 @@ results : Result[]</y:AttributeLabel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="white_diamond" target="none"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="46.703125" x="-38.16254528106424" y="-101.878173828125">has one<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="46.703125" x="-32.172609395479526" y="-81.95666505446599">has one<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -205,7 +225,7 @@ results : Result[]</y:AttributeLabel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="white_diamond" target="none"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="46.703125" x="52.44193748176224" y="-79.00072662733623">has one<y:LabelModel>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="46.703125" x="63.507949875199756" y="-67.57311529355621">has one<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -224,7 +244,7 @@ results : Result[]</y:AttributeLabel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="white_diamond" target="none"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="56.025390625" x="95.74896240234375" y="20.11647542317712">has many<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="56.025390625" x="76.266357421875" y="11.99149998482028">has many<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -265,7 +285,7 @@ results : Result[]</y:AttributeLabel>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="dashed" width="1.0"/>
           <y:Arrows source="none" target="plain"/>
-          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="77.57059077159613" y="-20.99126665527308">
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="4.0" x="49.13524918706173" y="0.914344342497543">
             <y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
