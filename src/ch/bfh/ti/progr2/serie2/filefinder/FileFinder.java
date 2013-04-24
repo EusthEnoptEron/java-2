@@ -78,11 +78,27 @@ public class FileFinder {
 	 * @throws FileNotFoundException
 	 */
 	public FileFinder(File root) throws FileNotFoundException {
+		changeDirectory(root);
+	}
+
+	/**
+	 * Change CWD (of this class) to dir
+	 * @param dir directory to change to
+	 * @throws FileNotFoundException if the file was not found
+	 */
+	public void changeDirectory(File dir) throws FileNotFoundException {
 		if(!root.exists()) {
 			throw new FileNotFoundException("The root directory you specified does not exist");
 		}
+		root = dir;
+	}
 
-		this.root = root;
+	/**
+	 * Returns the directory the file searcher is currently attached to
+	 * @return
+	 */
+	public File getCurrentDirectory() {
+		return root;
 	}
 
 	/**
