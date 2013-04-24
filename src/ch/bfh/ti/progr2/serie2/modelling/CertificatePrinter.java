@@ -12,40 +12,48 @@ public class CertificatePrinter {
 
 
 	/**
-	 * Makes a textual representation of the student's results
-	 * @param student student in question
+	 * Prints a textual representation of the student's results
+	 * @param certificate certificate to print
 	 * @return a certificate
 	 */
-	public String getCertificate(Student student) {
+	public void print(Certificate certificate) {
+		System.out.println(toString(certificate));
+	}
+
+	private String toString(Certificate certificate) {
 		StringBuilder builder = new StringBuilder();
+		Student student = certificate.getOwner();
+		Term term = certificate.getTerm();
+		Result[] results = certificate.getResults();
+
 
 		// Build header
 		builder.append(repeatString("#", WIDTH) + "\n");
-		builder.append("# " + padRight( "Certificate for " + student.getName(), WIDTH - 4) + " #\n");
+		builder.append("# " + padRight( "Certificate for " + student.getName() + " (" + term.getSeason().name() + " "+ term.getYear() +")", WIDTH - 4) + " #\n");
 		builder.append(repeatString("#", WIDTH) + "\n");
 
 		builder.append(
-			String.format("| %-" +ABBR_WIDTH + "s |  %-" +DESC_WIDTH + "s |  %-" +GRADE_WIDTH + "s |  %-" +ECTS_WIDTH + "s |\n",
+				String.format("| %-" +ABBR_WIDTH + "s |  %-" +DESC_WIDTH + "s |  %-" +GRADE_WIDTH + "s |  %-" +ECTS_WIDTH + "s |\n",
 
-					"Module",
-					"Description",
-					"Grade",
-					"ECTS")
+						"Module",
+						"Description",
+						"Grade",
+						"ECTS")
 		);
 		builder.append( repeatString("=", WIDTH) + "\n" );
 
-		for(Result result: student.getResults()) {
+		for(Result result: results) {
 			builder.append(
 					String.format("| %-" +ABBR_WIDTH + "s |  %-" +DESC_WIDTH + "s |  %-" +GRADE_WIDTH + "s |  %-" +ECTS_WIDTH + "s |\n",
-					result.getModule().getAbbreviation(),
-					result.getModule().getDescription(),
-					result.getGrade().name(),
-					result.hasPassed() ? result.getModule().getEcts() : 0)
+							result.getModule().getAbbreviation(),
+							result.getModule().getDescription(),
+							result.getGrade().name(),
+							result.hasPassed() ? result.getModule().getEcts() : 0)
 			);
 		}
 
 		builder.append( repeatString("=", WIDTH) + "\n");
-		builder.append( String.format("%"+ (WIDTH  - ECTS_WIDTH) +"s", student.getEcts()) );
+		builder.append( String.format("%"+ (WIDTH  - ECTS_WIDTH) +"s", student.getEcts(term)) );
 
 		return builder.toString();
 	}

@@ -21,14 +21,22 @@ public class ModellingTester {
 		CertificatePrinter printer = new CertificatePrinter();
 		Student student = new Student(0, "Hans Muster");
 
-		student.addResult(modules[0], Grade.A);
-		student.addResult(modules[1], Grade.B);
-		student.addResult(modules[2], Grade.C);
-		student.addResult(modules[3], Grade.D);
-		student.addResult(modules[4], Grade.E);
-		student.addResult(modules[5], Grade.FX);
-		student.addResult(modules[6], Grade.F);
+		Term summer = Term.getInstance(Term.Season.SUMMER, 2012);
+		Term winter = Term.getInstance(Term.Season.WINTER, 2012);
 
-		System.out.print(printer.getCertificate(student));
+
+		student.addResult(summer, modules[0], Grade.A);
+		student.addResult(winter, modules[1], Grade.B);
+		student.addResult(summer, modules[2], Grade.C);
+		student.addResult(winter, modules[3], Grade.D);
+		student.addResult(summer, modules[4], Grade.E);
+		student.addResult(winter, modules[5], Grade.FX);
+		student.addResult(summer, modules[6], Grade.F);
+		student.addResult(winter, modules[7], Grade.A);
+		student.addResult(summer, modules[8], Grade.B);
+
+		printer.print(student.getCertificate(summer));
+		printer.print(student.getCertificate(winter));
+
 	}
 }
