@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 
 
 /**
- * A very basic reader for CSV files.
+ * A very basic reader for CSV files. This ignores quotation marks.
  */
 class CSVReader implements Closeable {
     private char delimiter;
@@ -21,7 +21,7 @@ class CSVReader implements Closeable {
     private BufferedReader reader;
 
     /**
-     * Create a new CSV reader.
+     * Creates a new CSV reader.
      * @param fileName location of the file
      * @param delimiter delimiter for the values
      * @throws FileNotFoundException
@@ -31,20 +31,9 @@ class CSVReader implements Closeable {
 		this.fileName = fileName;
 
         reader = new BufferedReader(
-                new FileReader(fileName)
+            new FileReader(fileName)
         );
     }
-
-	/**
-	 * Re-initializes the reader.
-	 * @throws IOException
-	 */
-	public void reset() throws IOException {
-		reader.close();
-		reader = new BufferedReader(
-				new FileReader(fileName)
-		);
-	}
 
 	/**
 	 * Seeks forward (from the current position) a given number of lines.
@@ -52,6 +41,8 @@ class CSVReader implements Closeable {
 	 * @throws IOException
 	 */
 	public void seek(int lines) throws IOException {
+		assert lines >= 0;
+
 		int i = 0;
 		while(nextLine() && i < lines) {
 			i++;
@@ -65,14 +56,16 @@ class CSVReader implements Closeable {
      */
     public boolean nextLine() throws IOException {
         String line = reader.readLine();
+
         if(line == null) {
             return false;
         } else {
+	        // If the line is empty, go to the next line
 	        if(line.isEmpty()) {
 		        return nextLine();
 	        } else {
+		        // Line is OK, so make a new tokenizer
 	            tokenizer = new StringTokenizer(line, delimiter + "");
-
                 return true;
 	        }
         }
@@ -96,20 +89,26 @@ class CSVReader implements Closeable {
         return tokenizer.nextToken().trim();
     }
 
+	/**
+	 * Counts remaining values in this line.
+	 * @return
+	 */
 	public int countValues() {
 		if(tokenizer != null) return tokenizer.countTokens();
 		else return 0;
 	}
 
     /**
-     * Returns all values of the line as an array. Either call this or {@see readValue()}
-     * but not both.
+     * Returns the remaining values of the line as an array. Make sure that you don't mix this up with {@see readValue()}.
      * @return
      */
     public String[] readValues() {
 	    assert tokenizer != null;
+	    // Make array
         String[] values = new String[tokenizer.countTokens()];
-        int i = 0;
+
+	    // Populate array
+	    int i = 0;
         while(hasValues()) {
             values[i++] = readValue();
         }
@@ -123,25 +122,4 @@ class CSVReader implements Closeable {
     public void close() throws IOException {
         reader.close();
     }
-
-
-	public static void main(String[] args) {
-
-		try(
-				CSVReader reader = new CSVReader("my.csv", ';');
-		) {
-			while(reader.nextLine()) {
-				while(reader.hasValues()) {
-					System.out.print(reader.readValue() + "... ");
-				}
-				System.out.print("\n");
-			}
-		}
-		catch(FileNotFoundException e) {
-			System.out.println("File not found.");
-		}
-		catch(IOException e) {
-			System.out.println("IO Exception.");
-		}
-	}
 }

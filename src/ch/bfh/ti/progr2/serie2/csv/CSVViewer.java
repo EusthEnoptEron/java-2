@@ -26,8 +26,9 @@ public class CSVViewer extends JFrame {
 			putValue(Action.ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl O"));
 			putValue(Action.MNEMONIC_KEY, java.awt.event.KeyEvent.VK_O);
 
+			// Create a new file chooser at the CWD
 			fileChooser = new JFileChooser();
-
+			fileChooser.setCurrentDirectory(new File(System.getProperty("user.dir")));
 			// Only allow CSV files
 			fileChooser.setAcceptAllFileFilterUsed(false);
 			fileChooser.setFileFilter(new FileNameExtensionFilter("CSV file", "csv"));
@@ -63,10 +64,9 @@ public class CSVViewer extends JFrame {
 		setJMenuBar(bar);
 
 		// Initialize our table
-		table = new JTable(new CSVTableModel("my.csv", ';'));
-		table.setPreferredScrollableViewportSize(new Dimension(500, 70));
+		table = new JTable();
 
-		// Create the scroll pane and add the table to it.
+		// Create a scroll pane and add the table to it.
 		JScrollPane scrollPane = new JScrollPane(table);
 
 		// Add the scroll pane to this panel.

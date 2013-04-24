@@ -32,26 +32,31 @@ public class CSVTableModel extends AbstractTableModel {
 			ArrayList<Object[]> tmpData = new ArrayList<>();
 			int i = 0;
 
-			// Loop through the file once to analyze its contents
+			// Read each line into the tmp-array
 			while(reader.nextLine()) {
+				// Get values and update column count
 				Object[] values = reader.readValues();
 				columnCount = Math.max(columnCount, values.length);
 
 				if(i == 0) {
-					// Analyze first row
+					// Analyze FIRST row
 					types = analyzeValues(values);
 				}  else if(i == 1) {
-					// Analyze second row and check if it's the same as the first one
+					// Analyze SECOND row and check if it's the same as the first one
 					Class<?>[] tempTypes = analyzeValues(values);
 					if(!Arrays.equals(tempTypes, types)) {
 						// They're different, so we'll assume the first line was the title line
 						types = tempTypes;
+						// Remove titles from tmpData
 						titleValues = tmpData.remove(0);
 					} else {
+						// Types do match, so there is no title line
+						// -> convert the first line belatedly
 						tmpData.set(0, convertValues(tmpData.get(0)));
 					}
 					values = convertValues(values);
 				} else {
+					// Every other line will be converted
 					values = convertValues(values);
 				}
 				i++;
@@ -70,6 +75,7 @@ public class CSVTableModel extends AbstractTableModel {
 		}
 	}
 
+	// Convert values according to the types array
 	private Object[] convertValues(Object[] vals) {
 		Object[] results = new Object[vals.length];
 
@@ -82,6 +88,7 @@ public class CSVTableModel extends AbstractTableModel {
 					results[i] = res;
 				}
 			} else {
+				// vals > types
 				results[i] = vals[i];
 			}
 		}
@@ -92,16 +99,19 @@ public class CSVTableModel extends AbstractTableModel {
 	 * Convert a value to a certain type (Number / Date / Boolean)
 	 * @param val
 	 * @param type
-	 * @return
+	 * @return converted value or null if conversion failed
 	 */
 	private Object convertValue(String val, Class<?> type) {
 		Object result = val;
 		val = val.toLowerCase();
+
 		if(type.equals(Number.class)) {
+			// Try as integer
 			try {
 				result = Integer.parseInt(val);
 			} catch(NumberFormatException e) {
 				try {
+					// Now try as double
 					result = Double.parseDouble(val);
 				}
 				catch(NumberFormatException e2) {
@@ -109,12 +119,15 @@ public class CSVTableModel extends AbstractTableModel {
 				}
 			}
 		} else if(type.equals(Date.class)) {
+			// Date must be 10 chars long
 			if(val.length() == 10) {
 				try {
+					// Get date parts
 					int year  = Integer.parseInt(val.substring(0, 4));
 					int month = Integer.parseInt(val.substring(5, 7));
 					int day   = Integer.parseInt(val.substring(8, 10));
 
+					// Make date
 					Calendar cal =  Calendar.getInstance();
 					cal.set(year, month - 1, day);
 					result = cal.getTime();
