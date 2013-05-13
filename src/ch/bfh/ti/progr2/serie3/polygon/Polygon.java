@@ -31,15 +31,15 @@ public class Polygon extends java.awt.Polygon {
 
 		// Declare variables
 		int x1 = xpoints[offset],
-			y1 = ypoints[offset],
-			x2 = xpoints[offset+1],
-			y2 = ypoints[offset+1],
-			x3 = xpoints[npoints-1],
-			y3 = ypoints[npoints-1];
+		    y1 = ypoints[offset],
+		    x2 = xpoints[offset+1],
+		    y2 = ypoints[offset+1],
+		    x3 = xpoints[npoints-1],
+		    y3 = ypoints[npoints-1];
 
 		// Calculate
 		return Math.abs(x1 * y2 + x2 * y3 + x3 * y1 - y1 * x2 - y2 * x3 - y3 * x1 ) / 2.0
-				+ getArea(offset+1);
+		       + getArea(offset+1);
 	}
 
 	public static void main(String[] args) {
