@@ -16,30 +16,31 @@ public class Polygon extends java.awt.Polygon {
 	 * @return area of polygon
 	 */
 	public double getArea() {
-		return getArea(0);
+		return getArea(this.npoints);
 	}
 
 	/**
-	 * Returns the area of a subpolygon. Increases `offset` in order to "remove" one point after another.
-	 * @param offset index where to start
+	 * Returns the area of a subpolygon. Decrements `npoints` in order to shrink the task step by step.
+	 * This deliberately overwrites the instance variable, since it represents our new length in the current step.
+	 * @param npoints Number of vertices to consider
 	 * @return
 	 */
-	private double getArea(int offset) {
+	private double getArea(int npoints) {
 		// Should we stop calculating?
-		if(npoints - offset <= 2)
+		if(npoints <= 2)
 			return 0;
 
 		// Declare variables
-		int x1 = xpoints[offset],
-		    y1 = ypoints[offset],
-		    x2 = xpoints[offset+1],
-		    y2 = ypoints[offset+1],
-		    x3 = xpoints[npoints-1],
-		    y3 = ypoints[npoints-1];
+		int x1 = xpoints[npoints-1],
+		    y1 = ypoints[npoints-1],
+		    x2 = xpoints[npoints-2],
+		    y2 = ypoints[npoints-2],
+		    x3 = xpoints[0],
+		    y3 = ypoints[0];
 
 		// Calculate
 		return Math.abs(x1 * y2 + x2 * y3 + x3 * y1 - y1 * x2 - y2 * x3 - y3 * x1 ) / 2.0
-		       + getArea(offset+1);
+		       + getArea(npoints-1);
 	}
 
 	public static void main(String[] args) {
