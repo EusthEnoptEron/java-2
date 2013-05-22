@@ -1,7 +1,7 @@
 package ch.bfh.ti.progr2.serie3.polygon;
 
 /**
- * A polygon with getArea functionality.
+ * A polygon with included getArea functionality.
  */
 public class Polygon extends java.awt.Polygon {
 	public Polygon() {
@@ -12,7 +12,8 @@ public class Polygon extends java.awt.Polygon {
 	}
 
 	/**
-	 * Returns the area of this polygon.
+	 * Returns the area of this polygon. Beware that this does *not* cover irregular polygons, which would require an
+	 * entirely different approach.
 	 * @return area of polygon
 	 */
 	public double getArea() {
