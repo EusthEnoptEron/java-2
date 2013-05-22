@@ -14,9 +14,6 @@ import java.util.concurrent.locks.Lock;
  * To change this template use File | Settings | File Templates.
  */
 public class Bank {
-	// For test purposes
-	public static Random random = new Random(5);
-
 	private class Transaction implements Runnable {
 		private final BankAccount from;
 		private int fromIndex;
@@ -37,20 +34,21 @@ public class Bank {
 
 		@Override
 		public void run() {
-			Lock lock1,
-			     lock2;
+			Lock[] locks = new Lock[2];
 
 			// Acquire locks in a certain order to prevent a deadlock
-			lock1 = fromIndex < toIndex
-					? from.getLock()
-					: to.getLock();
-			lock2 = fromIndex < toIndex
-					? to.getLock()
-					: from.getLock();
+			if(fromIndex < toIndex) {
+				locks[0] = from.getLock();
+				locks[1] = to.getLock();
+			} else {
+				locks[0] = to.getLock();
+				locks[1] = from.getLock();
+			}
+
 			try {
 				// Lock!
-				lock1.lock();
-				lock2.lock();
+				locks[0].lock();
+				locks[1].lock();
 
 				// Do our tasks.
 				from.withdraw(amount);
@@ -58,8 +56,8 @@ public class Bank {
 			}
 			finally {
 				// Release both locks
-				lock1.unlock();
-				lock2.unlock();
+				locks[0].unlock();
+				locks[1].unlock();
 			}
 			// We have to do this outside the synchronized block because the "getTotalBalance" method will try to acquire all locks
 			System.out.printf("Transferred CHF%.2f from %d to %d, with a total of %.2f\n", amount, accounts.indexOf(from), accounts.indexOf(to), Bank.this.getTotalBalance());
@@ -68,24 +66,35 @@ public class Bank {
 
 	private ArrayList<BankAccount> accounts = new ArrayList<>();
 	ExecutorService pool;
-	public Bank() {
-		pool = Executors.newFixedThreadPool(1);
-	}
 
+	/**
+	 * Creates a new bank instance from a list of accounts.
+	 * @param accounts list of accounts
+	 */
 	public Bank(ArrayList<BankAccount> accounts) {
 		this.accounts = accounts;
 		preparePool();
 	}
 
+	/**
+	 * Creates a new bank instance from a list of accounts.
+	 * @param accounts list of accounts
+	 */
 	public Bank(BankAccount[] accounts) {
 		Collections.addAll(this.accounts, accounts);
 		preparePool();
 	}
 
+	// Prepare thread pool
 	private void preparePool() {
 		pool = Executors.newFixedThreadPool(accounts.size());
 	}
 
+	/**
+	 * Returns the total balance over all accounts in this bank instance.
+	 * In order to stay atomic, this will create locks for all accounts.
+	 * @return
+	 */
 	public double getTotalBalance() {
 		ArrayList<Lock> locks = new ArrayList<>();
 		double amount = 0;
@@ -103,7 +112,7 @@ public class Bank {
 
 				// Sleep for a random time to make things harder
 				try {
-					Thread.sleep(random.nextInt(30));
+					Thread.sleep(BankTester.random.nextInt(30));
 				} catch (InterruptedException e) {}
 			}
 		} finally {
@@ -116,40 +125,22 @@ public class Bank {
 		return amount;
 	}
 
-	public void addAccount(BankAccount account) {
-		accounts.add(account);
-	}
 
+	/**
+	 * Makes a asynchronous transaction.
+	 * @param from account number in this bank  from which the transaction goes
+	 * @param to account number in this bank  to which the transaction goes
+	 * @param amount amount of money to transfer
+	 */
 	public void makeTransaction(int from, int to, double amount) {
 		pool.execute(new Transaction(from, to, amount));
 	}
 
-	public static void main(String[] args) {
-		double MAX = 500;
-		int transactionCount = 20;
-
-		BankAccount[] accounts = new BankAccount[] {
-			new BankAccount(random.nextDouble() * MAX),
-			new BankAccount(random.nextDouble() * MAX),
-			new BankAccount(random.nextDouble() * MAX),
-			new BankAccount(random.nextDouble() * MAX),
-			new BankAccount(random.nextDouble() * MAX),
-			new BankAccount(random.nextDouble() * MAX),
-			new BankAccount(random.nextDouble() * MAX)
-		};
-
-		Bank bank = new Bank(accounts);
-		int from, to;
-		System.out.printf("START: CHF%.2f\n\n", bank.getTotalBalance());
-
-		for(int i = 0; i < transactionCount; i++) {
-			from = random.nextInt(accounts.length);
-			do {
-				to = random.nextInt(accounts.length);
-			} while (to == from);
-
-			bank.makeTransaction(from, to, random.nextDouble() * 50);
-		}
-		bank.pool.shutdown();
+	/**
+	 * Shuts down the thread pool contained by this bank instance.
+	 */
+	public void shutdown() {
+		pool.shutdown();
 	}
+
 }

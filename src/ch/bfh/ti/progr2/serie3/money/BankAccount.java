@@ -31,7 +31,7 @@ public class BankAccount {
 	public synchronized void deposit(double amount) {
 		balance += amount;
 		try {
-			Thread.sleep(Bank.random.nextInt(30));
+			Thread.sleep(BankTester.random.nextInt(30));
 		} catch (InterruptedException e) {}
 	}
 
