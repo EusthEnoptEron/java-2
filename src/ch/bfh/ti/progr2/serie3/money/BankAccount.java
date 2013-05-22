@@ -1,6 +1,7 @@
 package ch.bfh.ti.progr2.serie3.money;
 
 import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -9,30 +10,17 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class BankAccount {
 	private double balance;
-
-	private class Worker extends Thread {
-		BankAccount to;
-		double amount;
-
-		private Worker(BankAccount to, double amount) {
-			this.to = to;
-			this.amount = amount;
-		}
-
-		@Override
-		public void run() {
-			synchronized (BankAccount.this) {
-				BankAccount.this.withdraw(amount);
-				to.deposit(amount);
-			}
-		}
-	}
+	private Lock lock = new ReentrantLock();
 
 	/**
 	 * Constructs a bank account with a zero balance.
 	 */
 	public BankAccount() {
 		balance = 0;
+	}
+
+	public BankAccount(double balance) {
+		this.balance = balance;
 	}
 
 	/**
@@ -42,6 +30,9 @@ public class BankAccount {
 	 */
 	public synchronized void deposit(double amount) {
 		balance += amount;
+		try {
+			Thread.sleep(Bank.random.nextInt(30));
+		} catch (InterruptedException e) {}
 	}
 
 	/**
@@ -53,9 +44,6 @@ public class BankAccount {
 		balance -= amount;
 	}
 
-	public void makeTransaction(BankAccount to, double amount) {
-		(new Worker(to, amount)).run();
-	}
 
 	/**
 	 * Gets the current balance of the bank account.
@@ -64,5 +52,9 @@ public class BankAccount {
 	 */
 	public double getBalance() {
 		return balance;
+	}
+
+	public Lock getLock() {
+		return lock;
 	}
 }
