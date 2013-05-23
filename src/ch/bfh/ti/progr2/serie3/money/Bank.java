@@ -7,20 +7,19 @@ import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 
 /**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 22.05.13
- * Time: 14:40
- * To change this template use File | Settings | File Templates.
+ * A bank class that manages accounts.
  */
 public class Bank {
+	// Runnable class that is used for transactions
 	private class Transaction implements Runnable {
+		// Store descriptive variables
 		private final BankAccount from;
 		private int fromIndex;
 
 		private final BankAccount to;
 		private int toIndex;
 
+		// Amount of money to transfer
 		private double amount;
 
 		private Transaction(int fromIndex, int toIndex, double amount) {
@@ -32,8 +31,10 @@ public class Bank {
 			this.amount = amount;
 		}
 
+		// Run the job
 		@Override
 		public void run() {
+			// Array to store the necessary locks
 			Lock[] locks = new Lock[2];
 
 			// Acquire locks in a certain order to prevent a deadlock
