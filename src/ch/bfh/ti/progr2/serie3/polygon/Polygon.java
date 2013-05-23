@@ -7,6 +7,13 @@ public class Polygon extends java.awt.Polygon {
 	public Polygon() {
 		super();
 	}
+
+	/**
+	 * @see java.awt.Polygon
+	 * @param xpoints
+	 * @param ypoints
+	 * @param npoints
+	 */
 	public Polygon(int[] xpoints, int[] ypoints, int npoints) {
 		super(xpoints, ypoints, npoints);
 	}
@@ -44,8 +51,5 @@ public class Polygon extends java.awt.Polygon {
 		       + getArea(npoints-1);
 	}
 
-	public static void main(String[] args) {
-		Polygon myPoly = new Polygon(new int[]{0, 2, 4, 4, 2, 0}, new int[]{0, 0, 0, 2, 2, 2}, 6);
-		System.out.println(myPoly.getArea());
-	}
+
 }
