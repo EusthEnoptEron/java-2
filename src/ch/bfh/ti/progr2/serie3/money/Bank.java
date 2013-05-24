@@ -2,10 +2,7 @@ package ch.bfh.ti.progr2.serie3.money;
 
 import com.sun.javafx.collections.transformation.SortedList;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 
@@ -13,61 +10,37 @@ import java.util.concurrent.locks.Lock;
  * A bank class that manages accounts.
  */
 public class Bank {
-	private volatile ArrayList<Transaction> transactions = new ArrayList<>();
+	// Allowed inaccuracy of total balance
+	private static final double EPSILON = 10e-2;
+	public static volatile int counter = 0;
 
-	// Runnable class that is used for transactions
-	private class Transaction implements Runnable {
-		// Store descriptive variables
-		private final BankAccount from;
-		private int fromIndex;
+	private static Bank instance;
 
-		private final BankAccount to;
-		private int toIndex;
+	// List of accounts sorted by ID
+	private SortedMap<Integer, BankAccount> accounts = new TreeMap<>();
 
-		// Amount of money to transfer
-		private double amount;
+	// Balance used for debugging purposes
+	private Double basisBalance = null;
 
-		private Transaction(int fromIndex, int toIndex, double amount) {
-			this.from = accounts.get(fromIndex);
-			this.fromIndex = fromIndex;
-			this.to = accounts.get(toIndex);
-			this.toIndex = toIndex;
-
-			this.amount = amount;
-		}
-
-		// Run the job
-		@Override
-		public void run() {
-			from.transfer(to, amount);
-			// We have to do this outside the synchronized block because the "getTotalBalance" method will try to acquire all locks
-			System.out.printf("Transferred CHF%.2f from %d (%.2f) to %d (%.2f), with a total of CHF%.2f\n", amount, fromIndex, from.getBalance(), toIndex, to.getBalance(), Bank.this.getTotalBalance());
-			transactions.remove(this);
-		}
-	}
-
-	private ArrayList<BankAccount> accounts = new ArrayList<>();
+	private Bank() {}
 
 	/**
-	 * Creates a new bank instance from a list of accounts.
-	 * @param accounts list of accounts
+	 * Returns a Bank instance.
+	 * @return
 	 */
-	public Bank(Collection<BankAccount> accounts) {
-		for(BankAccount account: accounts) {
-			this.accounts.add(account.getId(), account);
-			account.setBank(this);
+	public static Bank instance() {
+		if(instance == null) {
+			instance = new Bank();
 		}
+		return instance;
 	}
 
 	/**
-	 * Creates a new bank instance from a list of accounts.
-	 * @param accounts list of accounts
+	 * Add an account to the bank. You don't usually need to call this, since all accounts are automatically added to the bank.
+	 * @param account
 	 */
-	public Bank(BankAccount[] accounts) {
-		for(BankAccount account: accounts) {
-			this.accounts.add(account.getId(), account);
-			account.setBank(this);
-		}
+	public void registerAccount(BankAccount account) {
+		accounts.put(account.getId(), account);
 	}
 
 	/**
@@ -79,21 +52,17 @@ public class Bank {
 		ArrayList<Lock> locks = new ArrayList<>();
 		double amount = 0;
 		try {
-			// First, acquire locks for all accounts!
-			for(BankAccount account: accounts) {
+			// First, acquire locks for all accounts, sorted by the IDs (courtesy of SortedMap)
+			for(BankAccount account: accounts.values()) {
 				Lock lock = account.getLock();
 				locks.add(lock);
 				lock.lock();
 			}
 
+			// -> Now, the accounts can't be changed anymore.
 			// Next, calculate the total balance
-			for(BankAccount account: accounts) {
+			for(BankAccount account: accounts.values()) {
 				amount += account.getBalance();
-
-				// Sleep for a random time to make things harder
-				try {
-					Thread.sleep(BankTester.random.nextInt(30));
-				} catch (InterruptedException e) {}
 			}
 		} finally {
 			// We're done, so release the locks
@@ -102,7 +71,58 @@ public class Bank {
 			}
 		}
 
+		// Set this for coherency purposes
+		if(basisBalance == null)
+			basisBalance = amount;
+
 		return amount;
 	}
 
+	/**
+	 * Reports the result of a transaction and kills the application if anything's not in order.
+	 * @param success transaction successful?
+	 * @param from
+	 * @param to
+	 * @param amount
+	 */
+	public synchronized void report(boolean success, BankAccount from, BankAccount to, double amount) {
+		synchronized (System.out) {
+			if(success) {
+				double balance = getTotalBalance();
+				System.out.printf("%d) Transferred CHF%.2f from %d (%.2f) to %d (%.2f), with a total of CHF%.2f\n",  ++counter, amount, from.getId(), from.getBalance(), to.getId(), to.getBalance(), balance);
+
+				// Verify total balance
+				if(Math.abs(balance - basisBalance) > EPSILON) {
+					System.out.println("ERROR: totals do not match!");
+					System.exit(-1);
+				}
+			} else {
+				System.out.printf("%d) FAIL: Couldn't transfer CHF%.2f from %d (%.2f) to %d (%.2f)\n", ++counter, amount, from.getId(), from.getBalance(), to.getId(), to.getBalance());
+			}
+		}
+	}
+
+
+
+	/**
+	 * Shuts down all threads and waits for them to be terminated.
+	 */
+	public void shutdown() {
+		for(BankAccount account: accounts.values()) {
+			account.shutdown();
+		}
+	}
+
+	public void printBalance() {
+		System.out.println("---------------------------------");
+		System.out.println("# BALANCE");
+		System.out.println("---------------------------------");
+		double total = 0;
+		for(BankAccount account: accounts.values()) {
+			total += account.getBalance();
+			System.out.printf("Account #%d) CHF%.2f\n",  account.getId(), account.getBalance());
+		}
+		System.out.println("---------------------------------");
+		System.out.printf("Total: CHF%.2f\n", total);
+	}
 }

@@ -10,14 +10,15 @@ import java.util.Random;
  * To change this template use File | Settings | File Templates.
  */
 public class BankTester {
-	private static final double MAX_BALANCE = 50;
+	private static final double MAX_BALANCE = 500;
 	private static final double TRANSACTION_RANGE = 50;
-	private static final int TRANSACTION_COUNT = 20;
+	private static final int TRANSACTION_COUNT = 1000;
+
 	// For test purposes
 	public static Random random = new Random(5);
 
 	public static void main(String[] args) {
-
+		// Create a bunch of random accounts
 		BankAccount[] accounts = new BankAccount[] {
 				new BankAccount(random.nextDouble() * MAX_BALANCE),
 				new BankAccount(random.nextDouble() * MAX_BALANCE),
@@ -28,10 +29,10 @@ public class BankTester {
 				new BankAccount(random.nextDouble() * MAX_BALANCE)
 		};
 
-		Bank bank = new Bank(accounts);
 		BankAccount from, to;
-		System.out.printf("START: CHF%.2f\n\n", bank.getTotalBalance());
+		System.out.printf("START: CHF%.2f\n\n", Bank.instance().getTotalBalance());
 
+		// Make a few transactions
 		for(int i = 0; i < TRANSACTION_COUNT; i++) {
 			from = accounts[random.nextInt(accounts.length)];
 			do {
@@ -40,5 +41,11 @@ public class BankTester {
 
 			from.transfer(to, random.nextDouble() * TRANSACTION_RANGE);
 		}
+
+		// Notify the bank that we're done with submitting jobs.
+		Bank.instance().shutdown();
+
+		// Print out a balance sheet
+		Bank.instance().printBalance();
 	}
 }
