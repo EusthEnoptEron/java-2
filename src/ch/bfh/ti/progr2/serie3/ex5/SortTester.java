@@ -53,7 +53,7 @@ public class SortTester {
 		};
 
 
-		List<Bear> nums = sort1(myList); //<- Doesn't compile
+//		List<Bear> nums = sort1(myList); //<- Doesn't compile
 		List<Bear> nums2 = sort2(myList);
 	}
 }
