@@ -11,17 +11,19 @@ public class PolygonTester {
 	// Test entry point
 	public static void main(String[] args) {
 
-		// Make a 4x4 rect
+		// Make a 4x3 rect
 		Polygon rect = new Polygon(
 			new int[] {0, 4, 4, 0},
 			new int[] {0, 0, 3, 3},
 		4);
 
+		// 4x3 parallelogram
 		Polygon parallelogram = new Polygon(
 			new int[] {1, 5, 4, 0},
 			new int[] {0, 0, 3, 3},
 		4);
 
+		// Trapezoid with b1 = 2, b2 = 7, h = 4
 		Polygon trapezoid = new Polygon(
 			new int[] {3, 5, 7, 0},
 			new int[] {4, 4, 0, 0},
