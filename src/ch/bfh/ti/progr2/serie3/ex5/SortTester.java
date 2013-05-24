@@ -32,12 +32,15 @@ public class SortTester {
 
 
 
+	// T has to be comparable with T and just T
 	// "Bear has to be comparable with BEAR!"
 	public static <T extends Comparable<T>> List<T> sort1(T[] array) {
 		T[] arrayCopy = array.clone();
 		Arrays.sort(arrayCopy);
 		return Arrays.asList(arrayCopy);
 	}
+
+	// T has to be comparable with T or one of its superclasses
 	// "Bear has to be comparable with bear or one of its superclasses!"
 	public static <T extends Comparable<? super T>> List<T> sort2(T[] array) {
 		T[] arrayCopy = array.clone();
