@@ -1,6 +1,9 @@
 package ch.bfh.ti.progr2.serie3.money;
 
+import com.sun.javafx.collections.transformation.SortedList;
+
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 import java.util.concurrent.*;
@@ -10,6 +13,8 @@ import java.util.concurrent.locks.Lock;
  * A bank class that manages accounts.
  */
 public class Bank {
+	private volatile ArrayList<Transaction> transactions = new ArrayList<>();
+
 	// Runnable class that is used for transactions
 	private class Transaction implements Runnable {
 		// Store descriptive variables
@@ -34,34 +39,10 @@ public class Bank {
 		// Run the job
 		@Override
 		public void run() {
-			// Array to store the necessary locks
-			Lock[] locks = new Lock[2];
-
-			// Acquire locks in a certain order to prevent a deadlock
-			if(fromIndex < toIndex) {
-				locks[0] = from.getLock();
-				locks[1] = to.getLock();
-			} else {
-				locks[0] = to.getLock();
-				locks[1] = from.getLock();
-			}
-
-			try {
-				// Lock!
-				locks[0].lock();
-				locks[1].lock();
-
-				// Do our tasks.
-				from.withdraw(amount);
-				to.deposit(amount);
-			}
-			finally {
-				// Release both locks
-				locks[0].unlock();
-				locks[1].unlock();
-			}
+			from.transfer(to, amount);
 			// We have to do this outside the synchronized block because the "getTotalBalance" method will try to acquire all locks
-			System.out.printf("Transferred CHF%.2f from %d to %d, with a total of %.2f\n", amount, accounts.indexOf(from), accounts.indexOf(to), Bank.this.getTotalBalance());
+			System.out.printf("Transferred CHF%.2f from %d (%.2f) to %d (%.2f), with a total of CHF%.2f\n", amount, fromIndex, from.getBalance(), toIndex, to.getBalance(), Bank.this.getTotalBalance());
+			transactions.remove(this);
 		}
 	}
 
@@ -72,8 +53,10 @@ public class Bank {
 	 * Creates a new bank instance from a list of accounts.
 	 * @param accounts list of accounts
 	 */
-	public Bank(ArrayList<BankAccount> accounts) {
-		this.accounts = accounts;
+	public Bank(Collection<BankAccount> accounts) {
+		for(BankAccount account: accounts) {
+			this.accounts.add(account.getId(), account);
+		}
 		preparePool();
 	}
 
@@ -82,7 +65,9 @@ public class Bank {
 	 * @param accounts list of accounts
 	 */
 	public Bank(BankAccount[] accounts) {
-		Collections.addAll(this.accounts, accounts);
+		for(BankAccount account: accounts) {
+			this.accounts.add(account.getId(), account);
+		}
 		preparePool();
 	}
 
@@ -134,7 +119,9 @@ public class Bank {
 	 * @param amount amount of money to transfer
 	 */
 	public void makeTransaction(int from, int to, double amount) {
-		pool.execute(new Transaction(from, to, amount));
+		Transaction transaction = new Transaction(from, to, amount);
+		transactions.add(transaction);
+		pool.execute(transaction);
 	}
 
 	/**
@@ -142,6 +129,24 @@ public class Bank {
 	 */
 	public void shutdown() {
 		pool.shutdown();
+		try {
+			boolean terminatedNormally = pool.awaitTermination(5, TimeUnit.SECONDS);
+			if(!terminatedNormally) {
+				System.out.println("Couldn't terminate. Please see the report below for details.");
+				System.out.println("------------------------------------------------------------");
+				for(Transaction transaction: transactions) {
+					System.out.printf("Couldn't transfer CHF%.2f from %d (%.2f) -> %d (%.2f).\n",
+							transaction.amount,
+							transaction.fromIndex,
+							transaction.from.getBalance(),
+							transaction.toIndex,
+							transaction.to.getBalance());
+				}
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+		}
+
 	}
 
 }
