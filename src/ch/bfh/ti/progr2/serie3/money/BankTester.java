@@ -10,7 +10,7 @@ import java.util.Random;
  * To change this template use File | Settings | File Templates.
  */
 public class BankTester {
-	private static final double MAX_BALANCE = 500;
+	private static final double MAX_BALANCE = 50;
 	private static final double TRANSACTION_RANGE = 50;
 	private static final int TRANSACTION_COUNT = 20;
 	// For test purposes
@@ -29,17 +29,16 @@ public class BankTester {
 		};
 
 		Bank bank = new Bank(accounts);
-		int from, to;
+		BankAccount from, to;
 		System.out.printf("START: CHF%.2f\n\n", bank.getTotalBalance());
 
 		for(int i = 0; i < TRANSACTION_COUNT; i++) {
-			from = random.nextInt(accounts.length);
+			from = accounts[random.nextInt(accounts.length)];
 			do {
-				to = random.nextInt(accounts.length);
+				to = accounts[random.nextInt(accounts.length)];
 			} while (to == from);
 
-			bank.makeTransaction(from, to, random.nextDouble() * TRANSACTION_RANGE);
+			from.transfer(to, random.nextDouble() * TRANSACTION_RANGE);
 		}
-		bank.shutdown();
 	}
 }

@@ -47,7 +47,6 @@ public class Bank {
 	}
 
 	private ArrayList<BankAccount> accounts = new ArrayList<>();
-	ExecutorService pool;
 
 	/**
 	 * Creates a new bank instance from a list of accounts.
@@ -56,8 +55,8 @@ public class Bank {
 	public Bank(Collection<BankAccount> accounts) {
 		for(BankAccount account: accounts) {
 			this.accounts.add(account.getId(), account);
+			account.setBank(this);
 		}
-		preparePool();
 	}
 
 	/**
@@ -67,13 +66,8 @@ public class Bank {
 	public Bank(BankAccount[] accounts) {
 		for(BankAccount account: accounts) {
 			this.accounts.add(account.getId(), account);
+			account.setBank(this);
 		}
-		preparePool();
-	}
-
-	// Prepare thread pool
-	private void preparePool() {
-		pool = Executors.newFixedThreadPool(accounts.size());
 	}
 
 	/**
@@ -109,44 +103,6 @@ public class Bank {
 		}
 
 		return amount;
-	}
-
-
-	/**
-	 * Makes a asynchronous transaction.
-	 * @param from account number in this bank  from which the transaction goes
-	 * @param to account number in this bank  to which the transaction goes
-	 * @param amount amount of money to transfer
-	 */
-	public void makeTransaction(int from, int to, double amount) {
-		Transaction transaction = new Transaction(from, to, amount);
-		transactions.add(transaction);
-		pool.execute(transaction);
-	}
-
-	/**
-	 * Shuts down the thread pool contained by this bank instance.
-	 */
-	public void shutdown() {
-		pool.shutdown();
-		try {
-			boolean terminatedNormally = pool.awaitTermination(5, TimeUnit.SECONDS);
-			if(!terminatedNormally) {
-				System.out.println("Couldn't terminate. Please see the report below for details.");
-				System.out.println("------------------------------------------------------------");
-				for(Transaction transaction: transactions) {
-					System.out.printf("Couldn't transfer CHF%.2f from %d (%.2f) -> %d (%.2f).\n",
-							transaction.amount,
-							transaction.fromIndex,
-							transaction.from.getBalance(),
-							transaction.toIndex,
-							transaction.to.getBalance());
-				}
-			}
-		} catch (InterruptedException e) {
-			e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-		}
-
 	}
 
 }
