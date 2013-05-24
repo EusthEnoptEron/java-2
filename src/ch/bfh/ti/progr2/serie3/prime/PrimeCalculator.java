@@ -4,8 +4,9 @@ import java.util.ArrayList;
 
 class PrimeCalculator extends Thread {
 	private ArrayList<Integer> list;
-	private int max = -1;
+	private int max = 0;
 	private boolean hasMax = false;
+	private boolean takeBreaks = true;
 
 	PrimeCalculator(String name) {
 		super(name);
@@ -19,12 +20,19 @@ class PrimeCalculator extends Thread {
 
 	}
 
+	public void setTakeBreaks(boolean takeBreaks) {
+		this.takeBreaks = takeBreaks;
+	}
+
 	public Integer[] getResults() {
-		return list.toArray(new Integer[0]);
+		return list.toArray(new Integer[list.size()]);
 	}
 
 	public int getMax() {
-		return list.get(list.size() - 1);
+		if(list.size() == 0)
+			return -1;
+		else
+			return list.get(list.size() - 1);
 	}
 
 	@Override
@@ -32,30 +40,18 @@ class PrimeCalculator extends Thread {
 		int i = 0;
 
 		try {
-			while( (hasMax && i < max)
-					|| (!hasMax  && !isInterrupted()) ) {
-				// System.out.printf("%s: is %d a prime number?", getName(), i);
+			while(!isInterrupted() && (!hasMax || i < max)) {
 				if(isPrime(i)) {
+					System.out.printf("%s: found %d\n", getName(), i);
 					list.add(i);
-					// System.out.println(" Yes!");
-				} else {
-					// System.out.println(" No!");
 				}
-				// if(!hasMax)
-				Thread.currentThread().sleep((long)(Math.random() * 1000));
 				i++;
 
-				// if(hasMax) {
-				Thread[] threads = new Thread[PrimeTester.NO_OF_THREADS + 1];
-				getThreadGroup().enumerate(threads);
-				System.out.println("----- " + getName() + " -----");
-				for(Thread t: threads) {
-					System.out.println(t.getName() + ": " + t.getState());
-				}
-				// }
+				if(takeBreaks)
+					Thread.sleep((long)(Math.random() * 1000));
 			}
 		} catch (InterruptedException e) {
-			// System.out.printf("%s got interrupted\n", getName());
+			System.out.printf("%s got interrupted\n", getName());
 		}
 	}
 

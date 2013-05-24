@@ -14,11 +14,20 @@ class PrimeTester {
 			calcs[i].start();
 		}
 		PrimeCalculator mainCalc = new PrimeCalculator("Main", PRIME_MAX);
+
 		System.out.println("STARTING MAIN");
 		mainCalc.run();
 		System.out.println("MAIN DONE");
 		for(PrimeCalculator calc: calcs) {
 			calc.interrupt();
+		}
+
+		for(PrimeCalculator calc: calcs) {
+			try {
+				calc.join();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 
 		System.out.println("--------------------");
