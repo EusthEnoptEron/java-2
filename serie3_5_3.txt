@@ -1,0 +1,17 @@
+# Example 1: File converter
+
+Producer: 1x Filesearcher
+Buffer: File list
+Consumer: nx File Converter
+
+# Example 2: Printer
+
+Producer: nx Clients
+Buffer: Printing queue
+Consumer: 1x Printserver
+
+# Example 3: FTP upload
+
+Producer: 1x Client
+Buffer: Files
+Consumer: 1x FTP Connection
