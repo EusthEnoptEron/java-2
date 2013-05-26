@@ -4,13 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * User: Simon
- * Date: 24.05.13
- * Time: 09:37
- * To change this template use File | Settings | File Templates.
- */
 public class SortTester {
 	abstract static class Animal implements Comparable<Animal> {
 		protected int numberOfTeeth = 0;
