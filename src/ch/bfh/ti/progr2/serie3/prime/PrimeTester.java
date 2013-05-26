@@ -6,22 +6,28 @@ class PrimeTester {
 
 
 	public static void main(String[] args) {
+		// CREATE CALCULATORS
 		PrimeCalculator[] calcs = new PrimeCalculator[NO_OF_THREADS];
+		PrimeCalculator mainCalc = new PrimeCalculator("Main", PRIME_MAX);
 
-		// Create
 		for(int i = 0; i < NO_OF_THREADS; i++) {
+			// Create & start thread
 			calcs[i] = new PrimeCalculator("Calc_" + i);
 			calcs[i].start();
 		}
-		PrimeCalculator mainCalc = new PrimeCalculator("Main", PRIME_MAX);
 
+		// START CALCULATION
+		//---------------------------------
 		System.out.println("STARTING MAIN");
 		mainCalc.run();
 		System.out.println("MAIN DONE");
+
+		// Main done -> interrupt others.
 		for(PrimeCalculator calc: calcs) {
 			calc.interrupt();
 		}
 
+		// Wait for them to finish
 		for(PrimeCalculator calc: calcs) {
 			try {
 				calc.join();
@@ -30,6 +36,7 @@ class PrimeTester {
 			}
 		}
 
+		// List results
 		System.out.println("--------------------");
 		System.out.println("RESULT LISTING");
 		System.out.println("--------------------");

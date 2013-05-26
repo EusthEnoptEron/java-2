@@ -10,60 +10,63 @@ class PrimeTester {
 	static ArrayList<Integer> mainResults = new ArrayList<>();
 	static ArrayList<Integer> subResults = new ArrayList<>();
 
-
+	static ExecutorService executor = Executors.newCachedThreadPool();
+	static CompletionService<ArrayList<Integer>> service = new ExecutorCompletionService<>(executor);
 
 	public static void main(String[] args) {
 		long timeMain = 0,
 			 timeSub = 0;
 
-		// STEP 1: Calculate in main method
+		// STEP 1: Calculate prime numbers in main method
 		PrimeCalculator mainCalc = new PrimeCalculator(0, PRIME_MAX+1);
+
 		TimeWatch watch = TimeWatch.start();
-		mainResults = mainCalc.calculate();
+			mainResults = mainCalc.calculate();
 		timeMain = watch.time();
 
 		// STEP 2: Calculate in threads
-		ExecutorService executor = Executors.newCachedThreadPool();
-		CompletionService<ArrayList<Integer>> service = new ExecutorCompletionService<ArrayList<Integer>>(executor);
-
 		int countPerThread = PRIME_MAX / NO_OF_THREADS;
 
 		Future<ArrayList<Integer>>[] results = new Future[NO_OF_THREADS];
 
 		watch.reset();
-		// Create
-		for(int i = 0; i < NO_OF_THREADS; i++) {
+			// Create threads
+			for(int i = 0; i < NO_OF_THREADS; i++) {
 
-			int start = i * countPerThread;
+				int start = i * countPerThread;
 
-			// The last task is a special case: calculate all remaining numbers (maybe the numbers wouldn't add up)
-			if(i + 1 == NO_OF_THREADS) {
-				results[i] = service.submit(new PrimeCalculator(start, PRIME_MAX - start+1));
-			} else {
-				results[i] = service.submit(new PrimeCalculator(start, countPerThread));
+				// The last task is a special case: calculate all remaining numbers (maybe the numbers wouldn't add up)
+				if(i + 1 == NO_OF_THREADS) {
+					results[i] = service.submit(new PrimeCalculator(start, PRIME_MAX - start+1));
+				} else {
+					results[i] = service.submit(new PrimeCalculator(start, countPerThread));
+				}
 			}
-		}
 
-		// We're fetching the futures manually to keep the order
-		for(Future<ArrayList<Integer>> result: results) {
-			try {
-//				System.out.println(result.get());
-				subResults.addAll(result.get());
-			} catch (InterruptedException|ExecutionException e) {
-				e.printStackTrace();
+			// We're fetching the futures manually to keep the order
+			for(Future<ArrayList<Integer>> result: results) {
+				try {
+					subResults.addAll(result.get());
+				} catch (InterruptedException|ExecutionException e) {
+					e.printStackTrace();
+				}
 			}
-		}
 		timeSub = watch.time();
+		// Shutdown thread pool
 		executor.shutdown();
+
+
+		// ----------------------- RESULT LISTING ------------------
+		String winner = "";
+		if(timeMain > timeSub) winner = "threads";
+		else winner = "main";
 
 		System.out.println("RESULT LISTING");
 		System.out.println("----------------------------------");
 		System.out.printf( "| Main method took %d ms\n", timeMain );
 		System.out.printf( "| Threads took %d ms\n", timeSub);
 		System.out.println("| -------------------------------");
-		System.out.printf("| WINNER: %s (%.2f%%)\n", timeMain < timeSub
-														? "main"
-														: "threads", ((double)Math.min(timeMain, timeSub)) / Math.max(timeMain, timeSub) * 100 );
+		System.out.printf("| WINNER: %s (%.2f%%)\n", winner, ((double)Math.min(timeMain, timeSub)) / Math.max(timeMain, timeSub) * 100 );
 		System.out.println("| -------------------------------");
 
 

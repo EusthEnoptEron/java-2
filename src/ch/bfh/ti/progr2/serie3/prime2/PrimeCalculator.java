@@ -3,10 +3,18 @@ package ch.bfh.ti.progr2.serie3.prime2;
 import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
+/**
+ * A calculator with the purpose of calculating prime numbers.
+ */
 class PrimeCalculator implements Callable<ArrayList<Integer>> {
 	private int start,
 	            count;
 
+	/**
+	 * Calculates a new calculator
+	 * @param start from where
+	 * @param count how many
+	 */
 	PrimeCalculator(int start, int count) {
 		this.start = start;
 		this.count = count;
@@ -33,11 +41,15 @@ class PrimeCalculator implements Callable<ArrayList<Integer>> {
 		return calculate();
 	}
 
+	/**
+	 * Calculates the prime numbers this calculator has been set to calculate.
+	 * @return a list of results
+	 */
 	public ArrayList<Integer> calculate() {
 		ArrayList<Integer> results = new ArrayList<>();
 
 		for(int i = 0; i < count; i++) {
-			//Calc effective number
+			//Calc actual number
 			int j = i + start;
 
 			if(isPrime(j)) {
